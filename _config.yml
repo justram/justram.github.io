@@ -8,11 +8,11 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Your Name / Site Title"
+title                    : "Jheng-Hong (Matt) Yang"
 title_separator          : "-"
-name                     : &name "Your Name"
+name                     : &name "Jheng-Hong Yang"
 description              : &description "personal description"
-url                      : https://academicpages.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
+url                      : https://justram.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "academicpages/academicpages.github.io"
 
@@ -151,6 +151,48 @@ analytics:
     tracking_id          :
 
 
+<<<<<<< HEAD
+=======
+# Site Author
+author:
+  name             : "Jheng-Hong (Matt) Yang"
+  avatar           : "profile.jpg"
+  bio              : "Ph.D. Student, University of Waterloo"
+  location         : "Waterloo, Ontario, CA"
+  employer         :
+  pubmed           : 
+  googlescholar    : "https://scholar.google.com/citations?user=hwcS7X0AAAAJ"
+  email            :
+  researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
+  uri              :
+  bitbucket        :
+  codepen          :
+  dribbble         :
+  flickr           :
+  facebook         :
+  foursquare       :
+  github           : "justram"
+  google_plus      :
+  keybase          :
+  instagram        :
+  impactstory      : 
+  lastfm           :
+  linkedin         :
+  orcid            : 
+  pinterest        :
+  soundcloud       :
+  stackoverflow    : 
+  steam            :
+  tumblr           :
+  twitter          : "@mattjustram"
+  vine             :
+  weibo            :
+  xing             :
+  youtube          :
+  wikipedia        :
+
+
+>>>>>>> 3cddb6f (update)
 # Reading Files
 include:
   - .htaccess
@@ -213,16 +255,16 @@ kramdown:
 # These settings control the types of collections used by the template
 collections:
   teaching:
-    output: true
+    output: false
     permalink: /:collection/:path/
   publications:
-    output: true
+    output: false
     permalink: /:collection/:path/
   portfolio:
-    output: true
+    output: false
     permalink: /:collection/:path/
   talks:
-    output: true
+    output: false
     permalink: /:collection/:path/
 
 
