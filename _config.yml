@@ -99,13 +99,13 @@ analytics:
 # Site Author
 author:
   name             : "Jheng-Hong (Matt) Yang"
-  avatar           : "profile.jpg"
+  avatar           : "profile-2026-320.jpg"
   bio              : "Information Retrieval, LLM as judge, and Multimodal Learning"
   location         : "Taipei, TAIWAN"
   employer         :
   pubmed           : 
-  googlescholar    : "https://scholar.google.com/citations?user=hwcS7X0AAAAJ"
-  email            : "jheng-hong.yang@uwaterloo.ca"
+  googlescholar    : "https://scholar.google.com/citations?hl=en&user=n3xCLnMAAAAJ"
+  email            : "jhyang@stencilzeit.com"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
@@ -165,6 +165,12 @@ exclude:
   - package.json*
   - Rakefile
   - README
+  - README.md
+  - CONTRIBUTING.md
+  - LICENSE
+  - bibliography
+  - scripts
+  - scratch
   - tmp
   - vendor
 keep_files:

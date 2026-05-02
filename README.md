@@ -15,6 +15,40 @@
 
 See more info at https://academicpages.github.io/
 
+## Maintaining papers from BibTeX
+
+Paper metadata is maintained in `bibliography/papers.bib` and generated into the Jekyll `_publications/` collection.
+
+To add or update a paper manually:
+
+1. Edit `bibliography/papers.bib`.
+2. Run:
+   ```bash
+   npm run papers
+   ```
+   or directly:
+   ```bash
+   uv run python scripts/generate_publications.py
+   ```
+3. Preview locally at `http://localhost:4000/`.
+
+To refresh from Google Scholar:
+
+```bash
+npm run scholar
+```
+
+This fetches the public profile at `https://scholar.google.com/citations?user=n3xCLnMAAAAJ&hl=en`, deduplicates repeated Scholar entries by normalized title, rewrites `bibliography/papers.bib`, and regenerates `_publications/`. Google Scholar may temporarily rate-limit automated requests; if that happens, wait and rerun the command later. Google Scholar also does not expose every field needed by a personal website, so add `pdf`, `slides`, `url`, or `category` fields manually afterward when needed, then rerun `npm run papers`.
+
+Supported BibTeX fields:
+
+- Required: `title`, `author`, `year`
+- Recommended: `booktitle` or `journal`, `month`, `day`, `abstract`
+- Links: `pdf`, `url`, `doi`, `slides`
+- Optional override: `category` with one of `conferences`, `manuscripts`, or `books`
+
+The generator writes Academic Pages-compatible Markdown files under `_publications/`. Generated files contain `generated_from_bib: true`; stale generated files are removed automatically when their BibTeX entries are deleted.
+
 ## Running locally
 
 When you are initially working your website, it is very useful to be able to preview the changes locally before pushing them to GitHub. To work locally you will need to:

@@ -1,0 +1,33 @@
+{% assign item = include.post %}
+{% assign item_title = item.title | markdownify | strip_html | strip_newlines %}
+{% assign item_excerpt = item.excerpt | markdownify | strip_html | strip_newlines %}
+
+<article class="compact-entry">
+  <h4 class="compact-entry__title">
+    {% if item.paperurl %}
+      <a href="{{ item.paperurl }}">{{ item_title }}</a>
+    {% elsif item.link %}
+      <a href="{{ item.link }}">{{ item_title }}</a>
+    {% else %}
+      {{ item_title }}
+    {% endif %}
+  </h4>
+
+  {% if item.venue or item.date %}
+    <p class="compact-entry__meta">
+      {% if item.venue %}<span>{{ item.venue }}</span>{% endif %}
+      {% if item.date %}<span>{{ item.date | date: '%Y' }}</span>{% endif %}
+    </p>
+  {% endif %}
+
+  {% if item_excerpt != '' %}
+    <p class="compact-entry__excerpt">{{ item_excerpt | truncate: 260 }}</p>
+  {% endif %}
+
+  {% if item.slidesurl or item.link %}
+    <p class="compact-entry__actions">
+      {% if item.slidesurl %}<a href="{{ item.slidesurl }}">slides</a>{% endif %}
+      {% if item.link %}<a href="{{ item.link }}">link</a>{% endif %}
+    </p>
+  {% endif %}
+</article>

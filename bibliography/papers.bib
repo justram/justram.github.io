@@ -1,0 +1,326 @@
+% Generated from Google Scholar by scripts/update_bib_from_google_scholar.py.
+
+% Edit manually only for fields Scholar does not expose, such as pdf/slides links.
+
+
+@inproceedings{lin-2025-gosling-grows-up-retrieval-with-learned-dense-and-sparse-representation,
+  title = {Gosling Grows Up: Retrieval with Learned Dense and Sparse Representations Using Anserini},
+  author = {Jimmy Lin and Arthur Haonan Chen and Carlos Lassance and Xueguang Ma and Ronak Pradeep and Tommaso Teofili and Jasper Xian and Jheng-Hong Yang and Brayden Zhong and Vincent Zhong},
+  booktitle = {Proceedings of the 48th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  year = {2025},
+  month = {7},
+  day = {13},
+  pages = {3223-3233},
+  url = {https://dl.acm.org/doi/abs/10.1145/3726302.3730281},
+  abstract = {The Anserini IR toolkit has come a long way since efforts began in 2015. Although the goals of the project - to bridge research and practice in information retrieval, and to provide reproducible, easy-to-use baselines - have remained constant, the world has changed quite a bit. We discuss how Anserini has evolved in response to this changing environment, the most significant of which is the advent of transformer-based retrieval models that did not exist when the project started. The bi-encoder architecture provides a framework for understanding retrieval models based on dense and sparse vector representations, and offers a reference for conveying the capabilities of our toolkit. Anserini provides end-to-end first-stage retrieval based on single-vector learned dense and sparse representations, directly building on the open-source Lucene search library and the ONNX runtime. This minimal design accelerates the pace …}
+}
+
+@inproceedings{yang-2024-retrieval-evaluation-for-long-form-and-knowledge-intensive-image-text,
+  title = {Retrieval Evaluation for Long-Form and Knowledge-Intensive Image–Text Article Composition},
+  author = {Jheng-Hong Yang and Carlos Lassance and Rafael S Rezende and Krishna Srinivasan and Stéphane Clinchant and Jimmy Lin},
+  booktitle = {Proceedings of the First Workshop on Advancing Natural Language Processing for Wikipedia},
+  year = {2024},
+  month = {11},
+  pages = {36-45},
+  url = {https://aclanthology.org/2024.wikinlp-1.9/},
+  abstract = {This paper examines the integration of images into Wikipedia articles by evaluating image–text retrieval tasks in multimedia content creation, focusing on developing retrieval-augmented tools to enhance the creation of high-quality multimedia articles. Despite ongoing research, the interplay between text and visuals, such as photos and diagrams, remains underexplored, limiting support for real-world applications. We introduce AToMiC, a dataset for long-form, knowledge-intensive image–text retrieval, detailing its task design, evaluation protocols, and relevance criteria. Our findings show that a hybrid approach combining a sparse retriever with a dense retriever achieves satisfactory effectiveness, with nDCG@ 10 scores around 0.4 for Image Suggestion and Image Promotion tasks, providing insights into the challenges of retrieval evaluation in an image–text interleaved article composition context. The AToMiC dataset is available at https://github. com/TREC-AToMiC/AToMiC.}
+}
+
+@article{yang-2024-toward-automatic-relevance-judgment-using-vision-language-models-for-i,
+  title = {Toward Automatic Relevance Judgment Using Vision--Language Models for Image--Text Retrieval Evaluation},
+  author = {Jheng-Hong Yang and Jimmy Lin},
+  journal = {arXiv preprint arXiv:2408.01363},
+  year = {2024},
+  month = {8},
+  day = {2},
+  url = {https://arxiv.org/abs/2408.01363},
+  abstract = {Vision--Language Models (VLMs) have demonstrated success across diverse applications, yet their potential to assist in relevance judgments remains uncertain. This paper assesses the relevance estimation capabilities of VLMs, including CLIP, LLaVA, and GPT-4V, within a large-scale \\textit\{ad hoc\} retrieval task tailored for multimedia content creation in a zero-shot fashion. Preliminary experiments reveal the following: (1) Both LLaVA and GPT-4V, encompassing open-source and closed-source visual-instruction-tuned Large Language Models (LLMs), achieve notable Kendall's when compared to human relevance judgments, surpassing the CLIPScore metric. (2) While CLIPScore is strongly preferred, LLMs are less biased towards CLIP-based retrieval systems. (3) GPT-4V's score distribution aligns more closely with human judgments than other models, achieving a Cohen's value of around 0.08, which outperforms CLIPScore at approximately -0.096. These findings underscore the potential of LLM-powered VLMs in enhancing relevance judgments.}
+}
+
+@inproceedings{kamalloo-2024-resources-for-brewing-beir-reproducible-reference-models-and-stati,
+  title = {Resources for Brewing BEIR: Reproducible Reference Models and Statistical Analyses},
+  author = {Ehsan Kamalloo and Nandan Thakur and Carlos Lassance and Xueguang Ma and Jheng-Hong Yang and Jimmy Lin},
+  booktitle = {Proceedings of the 47th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  year = {2024},
+  month = {7},
+  day = {10},
+  pages = {1431-1440},
+  url = {https://dl.acm.org/doi/abs/10.1145/3626772.3657862},
+  abstract = {BEIR is a benchmark dataset originally designed for zero-shot evaluation of retrieval models across 18 different domain/task combinations. In recent years, we have witnessed the growing popularity of models based on representation learning, which naturally begs the question: How effective are these models when presented with queries and documents that differ from the training data? While BEIR was designed to answer this question, our work addresses two shortcomings that prevent the benchmark from achieving its full potential: First, the sophistication of modern neural methods and the complexity of current software infrastructure create barriers to entry for newcomers. To this end, we provide reproducible reference implementations that cover learned dense and sparse models. Second, comparisons on BEIR are performed by reducing scores from heterogeneous datasets into a single average that is difficult to …}
+}
+
+@inproceedings{zhong-2023-one-blade-for-one-purpose-advancing-math-information-retrieval-using,
+  title = {One Blade for One Purpose: Advancing Math Information Retrieval Using Hybrid Search},
+  author = {Wei Zhong and Sheng-Chieh Lin and Jheng-Hong Yang and Jimmy Lin},
+  booktitle = {Proceedings of the 46th international ACM SIGIR conference on research and development in information retrieval},
+  year = {2023},
+  month = {7},
+  day = {19},
+  pages = {141-151},
+  url = {https://dl.acm.org/doi/abs/10.1145/3539618.3591746},
+  abstract = {Neural retrievers have been shown to be effective for math-aware search. Their ability to cope with math symbol mismatches, to represent highly contextualized semantics, and to learn effective representations are critical to improving math information retrieval. However, the most effective retriever for math remains impractical as it depends on token-level dense representations for each math token, which leads to prohibitive storage demands, especially considering that math content generally consumes more tokens. In this work, we try to alleviate this efficiency bottleneck while boosting math information retrieval effectiveness via hybrid search. To this end, we propose MABOWDOR, a Math-Aware Bestof-Worlds Domain Optimized Retriever, which has an unsupervised structure search component, a dense retriever, and optionally a sparse retriever on top of a domain-adapted backbone learned by context-enhanced …}
+}
+
+@inproceedings{yang-2023-atomic-an-image-text-retrieval-test-collection-to-support-multimedia-c,
+  title = {AToMiC: An Image/Text Retrieval Test Collection to Support Multimedia Content Creation},
+  author = {Jheng-Hong Yang and Carlos Lassance and Rafael Sampaio De Rezende and Krishna Srinivasan and Miriam Redi and Stéphane Clinchant and Jimmy Lin},
+  booktitle = {Proceedings of the 46th International ACM SIGIR conference on research and development in information retrieval},
+  year = {2023},
+  month = {7},
+  day = {19},
+  pages = {2975-2984},
+  url = {https://dl.acm.org/doi/abs/10.1145/3539618.3591903},
+  abstract = {This paper presents the AToMiC (Authoring Tools for Multi media Content) dataset, designed to advance research in image/text cross-modal retrieval. While vision--language pretrained transformers have led to significant improvements in retrieval effectiveness, existing research has relied on image-caption datasets that feature only simplistic image--text relationships and underspecified user models of retrieval tasks. To address the gap between these oversimplified settings and real-world applications for multimedia content creation, we introduce a new approach for building retrieval test collections. We leverage hierarchical structures and diverse domains of texts, styles, and types of images, as well as large-scale image--document associations embedded in Wikipedia. We formulate two tasks based on a realistic user model and validate our dataset through retrieval experiments using baseline models. AToMiC …}
+}
+
+@article{kamalloo-2023-resources-for-brewing-beir-reproducible-reference-models-and-an-of,
+  title = {Resources for Brewing BEIR: Reproducible Reference Models and an Official Leaderboard},
+  author = {Ehsan Kamalloo and Nandan Thakur and Carlos Lassance and Xueguang Ma and Jheng-Hong Yang and Jimmy Lin},
+  journal = {arXiv preprint arXiv:2306.07471},
+  year = {2023},
+  month = {6},
+  day = {13},
+  url = {https://arxiv.org/abs/2306.07471},
+  abstract = {BEIR is a benchmark dataset for zero-shot evaluation of information retrieval models across 18 different domain/task combinations. In recent years, we have witnessed the growing popularity of a representation learning approach to building retrieval models, typically using pretrained transformers in a supervised setting. This naturally begs the question: How effective are these models when presented with queries and documents that differ from the training data? Examples include searching in different domains (e.g., medical or legal text) and with different types of queries (e.g., keywords vs. well-formed questions). While BEIR was designed to answer these questions, our work addresses two shortcomings that prevent the benchmark from achieving its full potential: First, the sophistication of modern neural methods and the complexity of current software infrastructure create barriers to entry for newcomers. To this end, we provide reproducible reference implementations that cover the two main classes of approaches: learned dense and sparse models. Second, there does not exist a single authoritative nexus for reporting the effectiveness of different models on BEIR, which has led to difficulty in comparing different methods. To remedy this, we present an official self-service BEIR leaderboard that provides fair and consistent comparisons of retrieval models. By addressing both shortcomings, our work facilitates future explorations in a range of interesting research questions that BEIR enables.}
+}
+
+@article{lin-2023-simple-yet-effective-neural-ranking-and-reranking-baselines-for-cross-l,
+  title = {Simple Yet Effective Neural Ranking and Reranking Baselines for Cross-Lingual Information Retrieval},
+  author = {Jimmy Lin and David Alfonso-Hermelo and Vitor Jeronymo and Ehsan Kamalloo and Carlos Lassance and Rodrigo Nogueira and Odunayo Ogundepo and Mehdi Rezagholizadeh and Nandan Thakur and Jheng-Hong Yang and Xinyu Zhang},
+  journal = {arXiv preprint arXiv:2304.01019},
+  year = {2023},
+  month = {4},
+  day = {3},
+  url = {https://arxiv.org/abs/2304.01019},
+  abstract = {The advent of multilingual language models has generated a resurgence of interest in cross-lingual information retrieval (CLIR), which is the task of searching documents in one language with queries from another. However, the rapid pace of progress has led to a confusing panoply of methods and reproducibility has lagged behind the state of the art. In this context, our work makes two important contributions: First, we provide a conceptual framework for organizing different approaches to cross-lingual retrieval using multi-stage architectures for mono-lingual retrieval as a scaffold. Second, we implement simple yet effective reproducible baselines in the Anserini and Pyserini IR toolkits for test collections from the TREC 2022 NeuCLIR Track, in Persian, Russian, and Chinese. Our efforts are built on a collaboration of the two teams that submitted the most effective runs to the TREC evaluation. These contributions provide a firm foundation for future advances.}
+}
+
+@inproceedings{yang-2023-trec-2023-h2oloo-in-the-product-search-challenge,
+  title = {TREC 2023-H2Oloo in the Product Search Challenge},
+  author = {Jheng-Hong Yang and Jimmy Lin},
+  booktitle = {Text REtrieval Conference},
+  year = {2023},
+  url = {https://scholar.google.com/scholar?cluster=6245051752051516563&hl=en&oi=scholarr}
+}
+
+@inproceedings{yang-2023-trec2023-atomic-overview,
+  title = {TREC 2023 AToMiC Overview},
+  author = {Jheng-Hong Yang and Carlos Lassance and Krishna Srinivasan and Miriam Redi and Stéphane Clinchant and Jimmy Lin},
+  booktitle = {Text REtrieval Conference},
+  year = {2023},
+  pages = {400},
+  url = {https://trec.nist.gov/pubs/trec32/papers/Overview_atomic.pdf},
+  abstract = {This paper presents an exploration of evaluating image–text retrieval tasks designed for multimedia content creation, with a particular focus on the dynamic interplay among various modalities, including text and images. The study highlights the pivotal role of visual-textual multimodality, where elements such as photos, graphics, and diagrams are not merely ornamental but significantly augment, complement, or even reshape the meaning conveyed by textual content. This integration of multiple modalities is central to crafting immersive and captivating multimedia experiences. In the context of detailing the TREC initiative’s evaluation process for the year, the paper introduces the AToMiC test collection, which serves as the foundational framework for evaluation. The authors delve into the distinctive task design, elucidating the specific challenges and objectives that characterize this year’s evaluation. The paper further outlines the evaluation protocols, encompassing methodologies such as pooling dependencies and the criteria employed for relevance judgments. This overview offers valuable insights into the intricate process of evaluating multimedia retrieval systems, underscoring the evolving complexity and interdisciplinary nature of this field.}
+}
+
+@inproceedings{zhong-2022-evaluating-token-level-and-passage-level-dense-retrieval-models-for-m,
+  title = {Evaluating Token-Level and Passage-Level Dense Retrieval Models for Math Information Retrieval},
+  author = {Wei Zhong and Jheng-Hong Yang and Yuqing Xie and Jimmy Lin},
+  booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2022},
+  year = {2022},
+  month = {12},
+  pages = {1092-1102},
+  url = {https://aclanthology.org/2022.findings-emnlp.78/},
+  abstract = {With the recent success of dense retrieval methods based on bi-encoders, studies have applied this approach to various interesting downstream retrieval tasks with good efficiency and in-domain effectiveness. Recently, we have also seen the presence of dense retrieval models in Math Information Retrieval (MIR) tasks, but the most effective systems remain classic retrieval methods that consider hand-crafted structure features. In this work, we try to combine the best of both worlds: a well-defined structure search method for effective formula search and efficient bi-encoder dense retrieval models to capture contextual similarities. Specifically, we have evaluated two representative bi-encoder models for token-level and passage-level dense retrieval on recent MIR tasks. Our results show that bi-encoder models are highly complementary to existing structure search methods, and we are able to advance the state-of-the-art on MIR datasets.}
+}
+
+@inproceedings{luo-2022-multiperiod-corporate-default-prediction-through-neural-parametric-fami,
+  title = {Multiperiod Corporate Default Prediction Through Neural Parametric Family Learning},
+  author = {Wei-Lun Luo and Yu-Ming Lu and Jheng-Hong Yang and Jin-Chuan Duan and Chuan-Ju Wang},
+  booktitle = {Proceedings of the 2022 SIAM International Conference on Data Mining (SDM)},
+  year = {2022},
+  pages = {316-324},
+  publisher = {Society for Industrial and Applied Mathematics},
+  url = {https://epubs.siam.org/doi/abs/10.1137/1.9781611977172.36},
+  abstract = {Default analysis plays an essential role in financial markets because it narrows the information gap between borrowers and lenders. Of late, machine learning-based methods have found their way to default analysis and typically view it as a risk classification task by slotting obligors into risk categories. The quality of such an approach is assessed by its prediction accuracy in risk rankings. Rarely considered but important are issues on the predicted numbers of default occurrences and the term structure of cumulative default probabilities for which classification tools are by nature silent. In this paper, we depart from the typical practice of risk classification and focus on employing machine learning to estimate the term structure of cumulative default probabilities—a structured estimation that contains default probabilities from short-term to long-term periods. To this end, we formulate the task as a problem of parametric …}
+}
+
+@article{yang-2021-sparsifying-sparse-representations-for-passage-retrieval-by-top-maskin,
+  title = {Sparsifying Sparse Representations for Passage Retrieval by Top-k Masking},
+  author = {Jheng-Hong Yang and Xueguang Ma and Jimmy Lin},
+  journal = {arXiv preprint arXiv:2112.09628},
+  year = {2021},
+  month = {12},
+  day = {17},
+  url = {https://arxiv.org/abs/2112.09628},
+  abstract = {Sparse lexical representation learning has demonstrated much progress in improving passage retrieval effectiveness in recent models such as DeepImpact, uniCOIL, and SPLADE. This paper describes a straightforward yet effective approach for sparsifying lexical representations for passage retrieval, building on SPLADE by introducing a top- masking scheme to control sparsity and a self-learning method to coax masked representations to mimic unmasked representations. A basic implementation of our model is competitive with more sophisticated approaches and achieves a good balance between effectiveness and efficiency. The simplicity of our methods opens the door for future explorations in lexical representation learning for passage retrieval.}
+}
+
+@inproceedings{lin-2021-contextualized-query-embeddings-for-conversational-search,
+  title = {Contextualized Query Embeddings for Conversational Search},
+  author = {Sheng-Chieh Lin and Jheng-Hong Yang and Jimmy Lin},
+  booktitle = {Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing},
+  year = {2021},
+  month = {11},
+  pages = {1004-1015},
+  url = {https://aclanthology.org/2021.emnlp-main.77/},
+  abstract = {This paper describes a compact and effective model for low-latency passage retrieval in conversational search based on learned dense representations. Prior to our work, the state-of-the-art approach uses a multi-stage pipeline comprising conversational query reformulation and information retrieval modules. Despite its effectiveness, such a pipeline often includes multiple neural models that require long inference times. In addition, independently optimizing each module ignores dependencies among them. To address these shortcomings, we propose to integrate conversational query reformulation directly into a dense retrieval model. To aid in this goal, we create a dataset with pseudo-relevance labels for conversational search to overcome the lack of training data and to explore different training strategies. We demonstrate that our model effectively rewrites conversational queries as dense representations in conversational search and open-domain question answering datasets. Finally, after observing that our model learns to adjust the L2 norm of query token embeddings, we leverage this property for hybrid retrieval and to support error analysis.}
+}
+
+@article{lin-2021-multi-stage-conversational-passage-retrieval-an-approach-to-fusing-term,
+  title = {Multi-Stage Conversational Passage Retrieval: An Approach to Fusing Term Importance Estimation and Neural Query Rewriting},
+  author = {Sheng-Chieh Lin and Jheng-Hong Yang and Rodrigo Nogueira and Ming-Feng Tsai and Chuan-Ju Wang and Jimmy Lin},
+  journal = {ACM Transactions on Information Systems (TOIS)},
+  year = {2021},
+  month = {8},
+  day = {31},
+  pages = {1-29},
+  publisher = {ACM},
+  url = {https://dl.acm.org/doi/abs/10.1145/3446426},
+  abstract = {Conversational search plays a vital role in conversational information seeking. As queries in information seeking dialogues are ambiguous for traditional ad hoc information retrieval (IR) systems due to the coreference and omission resolution problems inherent in natural language dialogue, resolving these ambiguities is crucial. In this article, we tackle conversational passage retrieval, an important component of conversational search, by addressing query ambiguities with query reformulation integrated into a multi-stage ad hoc IR system. Specifically, we propose two conversational query reformulation (CQR) methods: (1) term importance estimation and (2) neural query rewriting. For the former, we expand conversational queries using important terms extracted from the conversational context with frequency-based signals. For the latter, we reformulate conversational queries into natural, stand-alone, human …}
+}
+
+@inproceedings{lin-2021-in-batch-negatives-for-knowledge-distillation-with-tightly-coupled-teac,
+  title = {In-Batch Negatives for Knowledge Distillation with Tightly-Coupled Teachers for Dense Retrieval},
+  author = {Sheng-Chieh Lin and Jheng-Hong Yang and Jimmy Lin},
+  booktitle = {Proceedings of the 6th Workshop on Representation Learning for NLP (RepL4NLP-2021)},
+  year = {2021},
+  month = {8},
+  pages = {163-173},
+  url = {https://aclanthology.org/2021.repl4nlp-1.17/},
+  abstract = {We present an efficient training approach to text retrieval with dense representations that applies knowledge distillation using the ColBERT late-interaction ranking model. Specifically, we propose to transfer the knowledge from a bi-encoder teacher to a student by distilling knowledge from ColBERT’s expressive MaxSim operator into a simple dot product. The advantage of the bi-encoder teacher–student setup is that we can efficiently add in-batch negatives during knowledge distillation, enabling richer interactions between teacher and student models. In addition, using ColBERT as the teacher reduces training cost compared to a full cross-encoder. Experiments on the MS MARCO passage and document ranking tasks and data from the TREC 2019 Deep Learning Track demonstrate that our approach helps models learn robust representations for dense retrieval effectively and efficiently.}
+}
+
+@inproceedings{hofst-tter-2021-efficiently-teaching-an-effective-dense-retriever-with-balanced,
+  title = {Efficiently Teaching an Effective Dense Retriever with Balanced Topic-Aware Sampling},
+  author = {Sebastian Hofstätter and Sheng-Chieh Lin and Jheng-Hong Yang and Jimmy Lin and Allan Hanbury},
+  booktitle = {Proceedings of the 44th international ACM SIGIR conference on research and development in information retrieval},
+  year = {2021},
+  month = {7},
+  day = {11},
+  pages = {113-122},
+  url = {https://dl.acm.org/doi/abs/10.1145/3404835.3462891},
+  abstract = {A vital step towards the widespread adoption of neural retrieval models is their resource efficiency throughout the training, indexing and query workflows. The neural IR community made great advancements in training effective dual-encoder dense retrieval (DR) models recently. A dense text retrieval model uses a single vector representation per query and passage to score a match, which enables low-latency first-stage retrieval with a nearest neighbor search. Increasingly common, training approaches require enormous compute power, as they either conduct negative passage sampling out of a continuously updating refreshing index or require very large batch sizes. Instead of relying on more compute capability, we introduce an efficient topic-aware query and balanced margin sampling technique, called TAS-Balanced. We cluster queries once before training and sample queries out of a cluster per batch. We train …}
+}
+
+@inproceedings{lin-2021-pyserini-a-python-toolkit-for-reproducible-information-retrieval-resear,
+  title = {Pyserini: A Python Toolkit for Reproducible Information Retrieval Research with Sparse and Dense Representations},
+  author = {Jimmy Lin and Xueguang Ma and Sheng-Chieh Lin and Jheng-Hong Yang and Ronak Pradeep and Rodrigo Nogueira},
+  booktitle = {Proceedings of the 44th international ACM SIGIR conference on research and development in information retrieval},
+  year = {2021},
+  month = {7},
+  day = {11},
+  pages = {2356-2362},
+  url = {https://dl.acm.org/doi/abs/10.1145/3404835.3463238},
+  abstract = {Pyserini is a Python toolkit for reproducible information retrieval research with sparse and dense representations. It aims to provide effective, reproducible, and easy-to-use first-stage retrieval in a multi-stage ranking architecture. Our toolkit is self-contained as a standard Python package and comes with queries, relevance judgments, pre-built indexes, and evaluation scripts for many commonly used IR test collections. We aim to support, out of the box, the entire research lifecycle of efforts aimed at improving ranking with modern neural approaches. In particular, Pyserini supports sparse retrieval (e.g., BM25 scoring using bag-of-words representations), dense retrieval (e.g., nearest-neighbor search on transformer-encoded representations), as well as hybrid retrieval that integrates both approaches. This paper provides an overview of toolkit features and presents empirical results that illustrate its effectiveness on two …}
+}
+
+@inproceedings{ju-2021-text-to-text-multi-view-learning-for-passage-re-ranking,
+  title = {Text-to-Text Multi-View Learning for Passage Re-Ranking},
+  author = {Jia-Huei Ju and Jheng-Hong Yang and Chuan-Ju Wang},
+  booktitle = {Proceedings of the 44th international ACM SIGIR conference on research and development in information retrieval},
+  year = {2021},
+  month = {7},
+  day = {11},
+  pages = {1803-1807},
+  url = {https://dl.acm.org/doi/abs/10.1145/3404835.3463048},
+  abstract = {Recently, much progress in natural language processing has been driven by deep contextualized representations pretrained on large corpora. Typically, the fine-tuning on these pretrained models for a specific downstream task is based on single-view learning, which is however inadequate as a sentence can be interpreted differently from different perspectives. Therefore, in this work, we propose a text-to-text multi-view learning framework by incorporating an additional view---the text generation view---into a typical single-view passage ranking model. Empirically, the proposed approach is of help to the ranking performance compared to its single-view counterpart. Component analysis is also reported in the paper.}
+}
+
+@inproceedings{zhang-2021-chatty-goose-a-python-framework-for-conversational-search,
+  title = {Chatty Goose: A Python Framework for Conversational Search},
+  author = {Edwin Zhang and Sheng-Chieh Lin and Jheng-Hong Yang and Ronak Pradeep and Rodrigo Nogueira and Jimmy Lin},
+  booktitle = {Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  year = {2021},
+  month = {7},
+  day = {11},
+  pages = {2521-2525},
+  url = {https://dl.acm.org/doi/abs/10.1145/3404835.3462782},
+  abstract = {Chatty Goose is an open-source Python conversational search framework that provides strong, reproducible reranking pipelines built on recent advances in neural models. The framework comprises extensible modular components that integrate with popular libraries such as Transformers by HuggingFace and ParlAI by Facebook. Our aim is to lower the barrier of entry for research in conversational search by providing reproducible baselines that researchers can build on top of. We provide an overview of the framework and demonstrate how to instantiate a new system from scratch. Chatty Goose incorporates improvements to components that we introduced in the TREC 2019 Conversational Assistance Track (CAsT), where our submission represented the top-performing system. Using our framework, a comparable run can be reproduced with just a few lines of code.}
+}
+
+@article{lin-2021-pyserini-an-easy-to-use-python-toolkit-to-support-replicable-ir-researc,
+  title = {Pyserini: An Easy-to-Use Python Toolkit to Support Replicable IR Research with Sparse and Dense Representations},
+  author = {Jimmy Lin and Xueguang Ma and Sheng-Chieh Lin and Jheng-Hong Yang and Ronak Pradeep and Rodrigo Nogueira},
+  journal = {arXiv preprint arXiv:2102.10073},
+  year = {2021},
+  month = {2},
+  day = {19},
+  url = {https://arxiv.org/abs/2102.10073},
+  abstract = {Pyserini is an easy-to-use Python toolkit that supports replicable IR research by providing effective first-stage retrieval in a multi-stage ranking architecture. Our toolkit is self-contained as a standard Python package and comes with queries, relevance judgments, pre-built indexes, and evaluation scripts for many commonly used IR test collections. We aim to support, out of the box, the entire research lifecycle of efforts aimed at improving ranking with modern neural approaches. In particular, Pyserini supports sparse retrieval (e.g., BM25 scoring using bag-of-words representations), dense retrieval (e.g., nearest-neighbor search on transformer-encoded representations), as well as hybrid retrieval that integrates both approaches. This paper provides an overview of toolkit features and presents empirical results that illustrate its effectiveness on two popular ranking tasks. We also describe how our group has built a culture of replicability through shared norms and tools that enable rigorous automated testing.}
+}
+
+@inproceedings{yang-2020-designing-templates-for-eliciting-commonsense-knowledge-from-pretraine,
+  title = {Designing Templates for Eliciting Commonsense Knowledge from Pretrained Sequence-to-Sequence Models},
+  author = {Jheng-Hong Yang and Sheng-Chieh Lin and Rodrigo Nogueira and Ming-Feng Tsai and Chuan-Ju Wang and Jimmy Lin},
+  booktitle = {Proceedings of the 28th International Conference on Computational Linguistics},
+  year = {2020},
+  month = {12},
+  pages = {3449-3453},
+  url = {https://aclanthology.org/2020.coling-main.307/},
+  abstract = {While internalized “implicit knowledge” in pretrained transformers has led to fruitful progress in many natural language understanding tasks, how to most effectively elicit such knowledge remains an open question. Based on the text-to-text transfer transformer (T5) model, this work explores a template-based approach to extract implicit knowledge for commonsense reasoning on multiple-choice (MC) question answering tasks. Experiments on three representative MC datasets show the surprisingly good performance of our simple template, coupled with a logit normalization technique for disambiguation. Furthermore, we verify that our proposed template can be easily extended to other MC tasks with contexts such as supporting facts in open-book question answering settings. Starting from the MC task, this work initiates further research to find generic natural language templates that can effectively leverage stored knowledge in pretrained models.}
+}
+
+@article{lin-2020-distilling-dense-representations-for-ranking-using-tightly-coupled-teac,
+  title = {Distilling Dense Representations for Ranking Using Tightly-Coupled Teachers},
+  author = {Sheng-Chieh Lin and Jheng-Hong Yang and Jimmy Lin},
+  journal = {arXiv preprint arXiv:2010.11386},
+  year = {2020},
+  month = {10},
+  day = {22},
+  url = {https://arxiv.org/abs/2010.11386},
+  abstract = {We present an approach to ranking with dense representations that applies knowledge distillation to improve the recently proposed late-interaction ColBERT model. Specifically, we distill the knowledge from ColBERT's expressive MaxSim operator for computing relevance scores into a simple dot product, thus enabling single-step ANN search. Our key insight is that during distillation, tight coupling between the teacher model and the student model enables more flexible distillation strategies and yields better learned representations. We empirically show that our approach improves query latency and greatly reduces the onerous storage requirements of ColBERT, while only making modest sacrifices in terms of effectiveness. By combining our dense representations with sparse representations derived from document expansion, we are able to approach the effectiveness of a standard cross-encoder reranker using BERT that is orders of magnitude slower.}
+}
+
+@article{lin-2020-conversational-question-reformulation-via-sequence-to-sequence-architec,
+  title = {Conversational Question Reformulation via Sequence-to-Sequence Architectures and Pretrained Language Models},
+  author = {Sheng-Chieh Lin and Jheng-Hong Yang and Rodrigo Nogueira and Ming-Feng Tsai and Chuan-Ju Wang and Jimmy Lin},
+  journal = {arXiv preprint arXiv:2004.01909},
+  year = {2020},
+  month = {4},
+  day = {4},
+  url = {https://arxiv.org/abs/2004.01909},
+  abstract = {This paper presents an empirical study of conversational question reformulation (CQR) with sequence-to-sequence architectures and pretrained language models (PLMs). We leverage PLMs to address the strong token-to-token independence assumption made in the common objective, maximum likelihood estimation, for the CQR task. In CQR benchmarks of task-oriented dialogue systems, we evaluate fine-tuned PLMs on the recently-introduced CANARD dataset as an in-domain task and validate the models using data from the TREC 2019 CAsT Track as an out-domain task. Examining a variety of architectures with different numbers of parameters, we demonstrate that the recent text-to-text transfer transformer (T5) achieves the best results both on CANARD and CAsT with fewer parameters, compared to similar transformer architectures.}
+}
+
+@article{lin-2020-tttttackling-winogrande-schemas,
+  title = {Tackling WinoGrande Schemas},
+  author = {Sheng-Chieh Lin and Jheng-Hong Yang and Rodrigo Nogueira and Ming-Feng Tsai and Chuan-Ju Wang and Jimmy Lin},
+  journal = {arXiv preprint arXiv:2003.08380},
+  year = {2020},
+  month = {3},
+  day = {18},
+  url = {https://arxiv.org/abs/2003.08380},
+  abstract = {We applied the T5 sequence-to-sequence model to tackle the AI2 WinoGrande Challenge by decomposing each example into two input text strings, each containing a hypothesis, and using the probabilities assigned to the "entailment" token as a score of the hypothesis. Our first (and only) submission to the official leaderboard yielded 0.7673 AUC on March 13, 2020, which is the best known result at this time and beats the previous state of the art by over five points.}
+}
+
+@inproceedings{lin-2020-trec-2020-notebook-cast-track,
+  title = {TREC 2020 Notebook: CAsT Track},
+  author = {Sheng-Chieh Lin and Jheng-Hong Yang and Jimmy Lin},
+  booktitle = {TREC},
+  year = {2020},
+  url = {https://trec.nist.gov/pubs/trec29/papers/h2oloo.C.pdf},
+  abstract = {This notebook describes our participation (h2oloo) in TREC CAsT 2020. We first illustrate our multi-stage pipeline for conversational search: sequence-to-sequence query reformulation followed by an ad hoc text ranking pipeline; then, detail our proposed method for canonical response entry. Empirically, we show that our method effectively reformulates conversational queries considering both historical user utterances and system responses, yielding final ranking result 0.363 and 0.494 in terms of MAP and NDCG@ 3 respectively, which is our best submission to CAsT 2020.}
+}
+
+@article{lin-2020-query-reformulation-using-query-history-for-passage-retrieval-in-conver,
+  title = {Query Reformulation Using Query History for Passage Retrieval in Conversational Search},
+  author = {Sheng-Chieh Lin and Jheng-Hong Yang and Rodrigo Nogueira and Ming-Feng Tsai and Chuan-Ju Wang and Jimmy Lin},
+  journal = {arXiv preprint arXiv:2005.02230},
+  year = {2020},
+  url = {https://scholar.google.com/scholar?cluster=10343667898805961108&hl=en&oi=scholarr},
+  abstract = {Passage retrieval in a conversational context is essential for many downstream applications; it is however extremely challenging due to limited data resources. To address this problem, we present an effective multi-stage pipeline for passage ranking in conversational search that integrates a widely-used IR system with a conversational query reformulation module. Along these lines, we propose two simple yet effective query reformulation approaches: historical query expansion (HQE) and neural transfer reformulation (NTR). Whereas HQE applies query expansion, a traditional IR query reformulation technique, NTR transfers human knowledge of conversational query understanding to a neural query reformulation model. The proposed HQE method was the top-performing submission of automatic systems in CAsT Track at TREC 2019. Building on this, our NTR approach improves an additional 18% over that best …}
+}
+
+@inproceedings{yang-2019-query-and-answer-expansion-from-conversation-history,
+  title = {Query and Answer Expansion from Conversation History},
+  author = {Jheng-Hong Yang and Sheng-Chieh Lin and Chuan-Ju Wang and Jimmy Lin and Ming-Feng Tsai},
+  booktitle = {TREC},
+  year = {2019},
+  month = {11},
+  day = {13},
+  url = {https://cs.uwaterloo.ca/~jimmylin/publications/YangJH_etal_TREC2019.pdf},
+  abstract = {In this paper, we present our methods, experimental analysis, and final submissions for the Conversational Assistance Track (CAsT) at TREC 2019. In addition to language understanding, extracting knowledge from historical dialogues (eg, previous queries, searching results) is a key to the conversational IR task. However, limited annotated data in the CAsT task makes machine learning or other data-driven approaches infeasible. Along this line, we propose two ad hoc and intuitive approaches: Historical Query Expansion and Historical Answer Expansion, to improve the performance of the conversational IR system with limited training data. Our empirical result on the CAsT training set shows that the proposed methods significantly improve the quality of conversational search in terms of retrieval (recall@ 1000: 0.774→ 0.844) and ranking (mAP: 0.187→ 0.197) compared to our strong baseline. As a result, our submitted entries outperform the median performance of all the 21 teams.}
+}
+
+@inproceedings{yang-2018-hop-rec-high-order-proximity-for-implicit-recommendation,
+  title = {HOP-Rec: High-Order Proximity for Implicit Recommendation},
+  author = {Jheng-Hong Yang and Chih-Ming Chen and Chuan-Ju Wang and Ming-Feng Tsai},
+  booktitle = {Proceedings of the 12th ACM conference on recommender systems},
+  year = {2018},
+  month = {9},
+  day = {27},
+  pages = {140-144},
+  url = {https://dl.acm.org/doi/abs/10.1145/3240323.3240381},
+  abstract = {Recommender systems are vital ingredients for many e-commerce services. In the literature, two of the most popular approaches are based on factorization and graph-based models; the former approach captures user preferences by factorizing the observed direct interactions between users and items, and the latter extracts indirect preferences from the graphs constructed by user-item interactions. In this paper we present HOP-Rec, a unified and efficient method that incorporates the two approaches. The proposed method involves random surfing on a graph to harvest high-order information among neighborhood items for each user. Instead of factorizing a transition matrix, our method introduces a confidence weighting parameter to simulate all high-order information simultaneously, for which we maintain a sparse user-item interaction matrix and enrich the matrix for each user using random walks. Experimental …}
+}
