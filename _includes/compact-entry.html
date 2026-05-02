@@ -13,6 +13,14 @@
     {% endif %}
   </h4>
 
+  {% if item.authors_html or item.authors %}
+    <p class="compact-entry__authors">{{ item.authors_html | default: item.authors }}</p>
+  {% endif %}
+
+  {% if item.award %}
+    <p class="compact-entry__award">{{ item.award }}</p>
+  {% endif %}
+
   {% if item.venue or item.date %}
     <p class="compact-entry__meta">
       {% if item.venue %}<span>{{ item.venue }}</span>{% endif %}

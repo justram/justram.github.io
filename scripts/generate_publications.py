@@ -231,6 +231,8 @@ def render_publication(entry: BibEntry) -> str:
     slides_url = fields.get("slidesurl") or fields.get("slides")
     excerpt = fields.get("abstract") or fields.get("note") or ""
     citation = fields.get("citation") or build_citation(entry, title, venue, year)
+    authors = format_authors(fields.get("author", ""))
+    authors_html = highlight_author_name(authors)
 
     front_matter = {
         "title": title,
@@ -240,6 +242,9 @@ def render_publication(entry: BibEntry) -> str:
         "excerpt": excerpt,
         "date": date,
         "venue": venue,
+        "authors": authors,
+        "authors_html": authors_html,
+        "award": fields.get("award", ""),
         "paperurl": paper_url,
         "slidesurl": slides_url,
         "citation": citation,
@@ -322,6 +327,18 @@ def build_citation(entry: BibEntry, title: str, venue: str, year: int) -> str:
 
 def format_authors(authors: str) -> str:
     return ", ".join(part.strip() for part in re.split(r"\s+and\s+", authors) if part.strip())
+
+
+def highlight_author_name(authors: str) -> str:
+    highlighted = authors
+    own_name_patterns = [
+        r"Jheng-Hong Yang",
+        r"JH Yang",
+        r"J\.H\. Yang",
+    ]
+    for pattern in own_name_patterns:
+        highlighted = re.sub(pattern, lambda match: f"<strong>{match.group(0)}</strong>", highlighted)
+    return highlighted
 
 
 def slugify(value: str) -> str:

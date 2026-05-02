@@ -143,12 +143,30 @@
     }
   }
 
+  .compact-entry__authors,
+  .compact-entry__award,
   .compact-entry__meta,
   .compact-entry__excerpt,
   .compact-entry__actions {
     margin: 0;
     font-size: 0.76rem;
     line-height: 1.45;
+  }
+
+  .compact-entry__authors {
+    margin-top: 0.12rem;
+    color: #475569;
+
+    strong {
+      color: #111827;
+      font-weight: 700;
+    }
+  }
+
+  .compact-entry__award {
+    margin-top: 0.12rem;
+    color: #92400e;
+    font-weight: 650;
   }
 
   .compact-entry__meta {
