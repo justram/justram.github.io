@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-labelledby="title desc">
+  <title id="title">Designing for attention</title>
+  <desc id="desc">A simple diagram showing one message adapted to channels, readers, and timing.</desc>
+  <rect width="900" height="420" fill="#fffaf0"/>
+  <g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="102" y="138" width="180" height="112" rx="4" fill="#fff7e8" stroke="#7a4a2b"/>
+    <path d="M282 194 H410" stroke="#7a4a2b"/>
+    <path d="M386 176 L410 194 L386 212" stroke="#7a4a2b"/>
+    <rect x="426" y="84" width="128" height="86" rx="4" fill="#eef3e7" stroke="#456f55"/>
+    <rect x="426" y="220" width="128" height="86" rx="4" fill="#eef3e7" stroke="#456f55"/>
+    <rect x="620" y="84" width="128" height="86" rx="4" fill="#fff7e8" stroke="#7a4a2b"/>
+    <rect x="620" y="220" width="128" height="86" rx="4" fill="#fff7e8" stroke="#7a4a2b"/>
+    <path d="M554 127 H620" stroke="#7a4a2b"/>
+    <path d="M554 263 H620" stroke="#7a4a2b"/>
+  </g>
+  <g font-family="Georgia, serif" fill="#241b16" text-anchor="middle">
+    <text x="192" y="186" font-size="28">Message</text>
+    <text x="192" y="218" font-size="22" fill="#6b5a4c">same content</text>
+    <text x="490" y="120" font-size="24">Reader</text>
+    <text x="490" y="152" font-size="21" fill="#6b5a4c">who cares?</text>
+    <text x="490" y="256" font-size="24">Timing</text>
+    <text x="490" y="288" font-size="21" fill="#6b5a4c">when seen?</text>
+    <text x="684" y="120" font-size="24">Channel</text>
+    <text x="684" y="152" font-size="21" fill="#6b5a4c">where?</text>
+    <text x="684" y="256" font-size="24">Format</text>
+    <text x="684" y="288" font-size="21" fill="#6b5a4c">what form?</text>
+  </g>
+</svg>

@@ -1,0 +1,1411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Professional English is not perfect English</title>
+  <style>
+
+    :root {
+      --serif: "EB Garamond", "Garamond", Georgia, serif;
+      --mono: "Departure Mono", "SFMono-Regular", ui-monospace, monospace;
+      --ink: #241b16;
+      --muted: rgba(36, 27, 22, 0.64);
+      --soft: rgba(255, 250, 240, 0.72);
+      --line: rgba(92, 69, 48, 0.18);
+      --blue: #456f55;
+      --blue-soft: rgba(111, 143, 97, 0.16);
+      --orange: #9a5a2f;
+      --orange-soft: rgba(217, 155, 82, 0.18);
+      --red: #a24d42;
+      --red-soft: rgba(185, 106, 87, 0.18);
+      --green: #456f55;
+      --green-soft: rgba(111, 143, 97, 0.17);
+      --purple: #7a4a2b;
+      --purple-soft: rgba(122, 74, 43, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #f0e8d9;
+      color: var(--ink);
+      font-family: var(--serif);
+      overflow: hidden;
+    }
+
+    .sun-wash,
+    .table-edge {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .sun-wash {
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(255, 252, 245, 0.58) 0 49%, rgba(255, 252, 245, 0.38) 66%, rgba(255, 252, 245, 0.08) 100%),
+        radial-gradient(circle at 45% 52%, rgba(255, 255, 255, 0.22), transparent 45%);
+    }
+
+    .table-edge {
+      z-index: 1;
+      background: linear-gradient(0deg, rgba(122, 74, 43, 0.04), transparent 20%);
+    }
+
+    .slide {
+      width: 1600px;
+      height: 900px;
+      padding: 62px 76px 56px;
+      background: transparent;
+      display: none;
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 5;
+      box-shadow: none;
+    }
+
+    body.show-all .slide {
+      display: grid;
+      margin-bottom: 36px;
+    }
+
+    .slide.active {
+      display: grid;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      font-size: 21px;
+      color: var(--blue);
+      font-weight: 760;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, p { margin-top: 0; }
+
+    .big-title {
+      font-size: 76px;
+      line-height: .98;
+      letter-spacing: 0;
+      margin-bottom: 30px;
+      font-weight: 810;
+      max-width: 1110px;
+    }
+
+    .subtitle {
+      font-size: 34px;
+      line-height: 1.25;
+      color: var(--muted);
+      max-width: 980px;
+      margin: 0;
+    }
+
+    .speaker {
+      margin-top: 46px;
+      padding-top: 22px;
+      border-top: 2px solid var(--line);
+      max-width: 910px;
+    }
+
+    .speaker-name {
+      margin: 0 0 8px;
+      font-size: 27px;
+      line-height: 1.18;
+      font-weight: 780;
+      color: #243447;
+    }
+
+    .speaker-meta {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.3;
+      color: var(--muted);
+    }
+
+    .speaker-line {
+      margin: 12px 0 0;
+      font-size: 22px;
+      line-height: 1.28;
+      color: #334155;
+      font-weight: 640;
+    }
+
+    .speaker-cred {
+      margin: 6px 0 0;
+      font-size: 20px;
+      line-height: 1.28;
+      color: #64748b;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 15px;
+    }
+
+    .socials a {
+      border: 1px solid rgba(92, 69, 48, 0.18);
+      border-radius: 999px;
+      padding: 7px 12px 8px;
+      color: var(--moss);
+      background: rgba(255, 250, 240, 0.46);
+      text-decoration: none;
+      font-size: 15px;
+      line-height: 1;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.42) inset;
+      transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .socials a:hover,
+    .socials a:focus-visible {
+      color: var(--coffee-dark);
+      background: rgba(246, 236, 217, 0.68);
+      border-color: rgba(122, 74, 43, 0.32);
+    }
+
+    .footer {
+      position: absolute;
+      left: 76px;
+      right: 76px;
+      bottom: 34px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #8a97a6;
+      font-size: 18px;
+    }
+
+    .footer a {
+      color: #64748b;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .slide-number {
+      font-weight: 720;
+      color: #738092;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .headline {
+      font-size: 52px;
+      line-height: 1.04;
+      font-weight: 800;
+      letter-spacing: 0;
+      margin: 0 0 26px;
+      max-width: 1180px;
+    }
+
+    .note {
+      border-left: 5px solid var(--blue);
+      background: #f8fbff;
+      padding: 22px 26px;
+      font-size: 26px;
+      line-height: 1.28;
+      color: #2d4055;
+      max-width: 1130px;
+    }
+
+    .panel {
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      background: #f8fafc;
+      padding: 30px;
+      min-height: 0;
+    }
+
+    .panel h3 {
+      margin: 0 0 22px;
+      font-size: 31px;
+      line-height: 1.1;
+    }
+
+    .panel p, .panel li {
+      font-size: 27px;
+      line-height: 1.28;
+      color: #334155;
+    }
+
+    .panel ul {
+      margin: 0;
+      padding-left: 28px;
+    }
+
+    .large-card {
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      padding: 38px;
+      background: #fff;
+      min-height: 250px;
+    }
+
+    .large-card h3 {
+      font-size: 34px;
+      margin-bottom: 16px;
+    }
+
+    .large-card p {
+      font-size: 30px;
+      line-height: 1.26;
+      color: #334155;
+    }
+
+    .quote {
+      font-family: var(--serif);
+      font-size: 43px;
+      line-height: 1.24;
+      color: #1f2937;
+      max-width: 1010px;
+    }
+
+    .knowledge-visual {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 32px;
+      align-items: stretch;
+      margin-top: 16px;
+    }
+
+    .wall {
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      padding: 30px;
+      background: #f8fafc;
+      display: grid;
+      grid-template-rows: auto 285px auto;
+      gap: 18px;
+    }
+
+    .wall-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 9px;
+      align-content: center;
+      min-height: 230px;
+    }
+
+    .brick {
+      height: 42px;
+      border-radius: 4px;
+      background: #dbe4ee;
+      border: 1px solid #c4d0dd;
+    }
+
+    .brick:nth-child(4n+2), .brick:nth-child(4n+3) {
+      background: #edf2f7;
+    }
+
+    .community {
+      border: 2px solid #93c5fd;
+      border-radius: 8px;
+      padding: 30px;
+      background: #fbfdff;
+      position: relative;
+      min-height: 390px;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 285px auto;
+      gap: 18px;
+    }
+
+    .knowledge-image {
+      width: 100%;
+      height: 285px;
+      border-radius: 8px;
+      object-fit: cover;
+      object-position: center;
+      border: 1px solid #d7e0ea;
+      background: #fff;
+      display: block;
+    }
+
+    .community-map {
+      position: relative;
+      height: 265px;
+      margin: 10px 0 20px;
+    }
+
+    .node {
+      position: absolute;
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
+      border: 3px solid #bfdbfe;
+      background: #eff6ff;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-size: 20px;
+      line-height: 1.05;
+      font-weight: 760;
+      color: #1d4ed8;
+      z-index: 2;
+    }
+
+    .node.reader { left: 34px; top: 82px; }
+    .node.field { left: 238px; top: 20px; }
+    .node.tooling { left: 445px; top: 88px; }
+    .node.result { left: 254px; top: 145px; border-color: #bbf7d0; background: #f0fdf4; color: #15803d; }
+
+    .link {
+      position: absolute;
+      height: 4px;
+      background: #cbd5e1;
+      transform-origin: left center;
+      z-index: 1;
+    }
+
+    .link.a { width: 225px; left: 132px; top: 134px; transform: rotate(-18deg); }
+    .link.b { width: 220px; left: 344px; top: 82px; transform: rotate(20deg); }
+    .link.c { width: 246px; left: 144px; top: 190px; transform: rotate(-8deg); background: #bfdbfe; }
+    .link.d { width: 235px; left: 330px; top: 196px; transform: rotate(10deg); background: #bfdbfe; }
+
+    .pulse {
+      position: absolute;
+      left: 205px;
+      top: 82px;
+      width: 270px;
+      height: 120px;
+      border: 3px dashed #f97316;
+      border-radius: 50%;
+      transform: rotate(-10deg);
+      opacity: .85;
+    }
+
+    .visual-caption {
+      font-size: 25px;
+      line-height: 1.24;
+      color: #34495f;
+      margin: 0;
+    }
+
+    .story {
+      align-self: end;
+      border-top: 4px solid var(--ink);
+      padding-top: 20px;
+      font-size: 27px;
+      line-height: 1.26;
+      color: var(--muted);
+    }
+
+    .chip {
+      display: inline-block;
+      border-radius: 6px;
+      padding: 4px 10px 7px;
+      font-weight: 760;
+    }
+
+    .b { background: var(--blue-soft); color: var(--blue); }
+    .o { background: var(--orange-soft); color: var(--orange); }
+    .r { background: var(--red-soft); color: var(--red); }
+    .g { background: var(--green-soft); color: var(--green); }
+    .p { background: var(--purple-soft); color: var(--purple); }
+
+    .arrow-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 34px;
+      margin-top: 38px;
+    }
+
+    .arrow {
+      font-size: 58px;
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    .bad-good {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      margin-top: 28px;
+    }
+
+    .mini-label {
+      font-size: 20px;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 760;
+      letter-spacing: .04em;
+      margin-bottom: 12px;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      margin-top: 28px;
+      align-items: stretch;
+    }
+
+    .process-card {
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      background: #f8fafc;
+      padding: 30px;
+    }
+
+    .process-card.reader-card {
+      border-color: #93c5fd;
+      background: #fbfdff;
+    }
+
+    .process-card h3 {
+      margin: 0 0 20px;
+      font-size: 32px;
+      line-height: 1.1;
+    }
+
+    .process-flow {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .process-step {
+      border: 1px solid #d7e0ea;
+      border-radius: 7px;
+      background: #fff;
+      padding: 14px 16px;
+      font-size: 25px;
+      line-height: 1.18;
+      color: #334155;
+      font-weight: 680;
+    }
+
+    .reader-card .process-step {
+      border-color: #bfdbfe;
+      color: #1f3f6f;
+    }
+
+    .process-card p {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.26;
+      color: #334155;
+    }
+
+    .process-note {
+      margin-top: 28px;
+      border-left: 5px solid var(--blue);
+      padding: 18px 22px;
+      background: #f8fbff;
+      font-size: 30px;
+      line-height: 1.24;
+      color: #2d4055;
+      max-width: 1160px;
+    }
+
+    .chalk-diagram {
+      margin-top: 26px;
+      border-radius: 8px;
+      background: #151b22;
+      border: 8px solid #d8c8aa;
+      min-height: 440px;
+      padding: 34px 42px;
+      color: #eef2f7;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      box-shadow: inset 0 0 40px rgba(255,255,255,.04);
+    }
+
+    .chalk-side {
+      position: relative;
+      min-height: 350px;
+    }
+
+    .chalk-label {
+      font-family: "Bradley Hand", "Comic Sans MS", ui-sans-serif, system-ui, sans-serif;
+      font-size: 38px;
+      line-height: 1;
+      letter-spacing: .02em;
+      color: #f8fafc;
+      opacity: .95;
+      margin: 0 0 22px;
+      transform: rotate(-1deg);
+    }
+
+    .chalk-box {
+      border: 4px solid rgba(248,250,252,.78);
+      border-radius: 18px;
+      padding: 22px 24px;
+      min-height: 160px;
+      font-family: "Bradley Hand", "Comic Sans MS", ui-sans-serif, system-ui, sans-serif;
+      font-size: 31px;
+      line-height: 1.16;
+      color: rgba(248,250,252,.92);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.06);
+    }
+
+    .chalk-small {
+      margin-top: 18px;
+      font-size: 24px;
+      line-height: 1.25;
+      color: rgba(226,232,240,.86);
+    }
+
+    .chalk-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .chalk-stroke {
+      fill: none;
+      stroke: rgba(248,250,252,.72);
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .chalk-stroke-blue {
+      fill: none;
+      stroke: rgba(147,197,253,.85);
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .chalk-word {
+      position: absolute;
+      font-family: "Bradley Hand", "Comic Sans MS", ui-sans-serif, system-ui, sans-serif;
+      color: rgba(248,250,252,.9);
+      font-size: 30px;
+      line-height: 1;
+      transform: rotate(-4deg);
+    }
+
+    .chalk-word.think { left: 28px; top: 155px; }
+    .chalk-word.text { left: 235px; top: 155px; }
+    .chalk-word.problem { right: 48px; top: 116px; }
+    .chalk-word.value { right: 42px; top: 250px; transform: rotate(3deg); }
+
+    .chalk-map {
+      margin-top: 26px;
+      border-radius: 8px;
+      background: #151b22;
+      border: 8px solid #d8c8aa;
+      height: 440px;
+      padding: 34px 42px;
+      color: #eef2f7;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 0 40px rgba(255,255,255,.04);
+    }
+
+    .chalk-map svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .chalk-map-text {
+      position: absolute;
+      font-family: "Bradley Hand", "Comic Sans MS", ui-sans-serif, system-ui, sans-serif;
+      color: rgba(248,250,252,.94);
+      line-height: 1.03;
+      transform: rotate(-1deg);
+    }
+
+    .chalk-map-text.writer { left: 76px; top: 88px; font-size: 38px; }
+    .chalk-map-text.writer-small { left: 76px; top: 145px; font-size: 28px; color: rgba(226,232,240,.86); }
+    .chalk-map-text.reader { left: 805px; top: 50px; font-size: 42px; }
+    .chalk-map-text.textbox { left: 838px; top: 172px; font-size: 44px; }
+    .chalk-map-text.world { left: 850px; top: 318px; font-size: 38px; transform: rotate(2deg); }
+    .chalk-map-text.problem { left: 1055px; top: 128px; font-size: 30px; transform: rotate(4deg); }
+    .chalk-map-text.value { left: 1082px; top: 258px; font-size: 30px; transform: rotate(-3deg); }
+    .chalk-map-note {
+      position: absolute;
+      left: 78px;
+      bottom: 42px;
+      width: 610px;
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 25px;
+      line-height: 1.24;
+      color: rgba(226,232,240,.86);
+    }
+
+    .process-image {
+      width: min(100%, 1000px);
+      height: auto;
+      border-radius: 8px;
+      object-fit: contain;
+      object-position: center;
+      border: 1px solid #d7e0ea;
+      display: block;
+      margin: 0 auto;
+      background: #111820;
+    }
+
+    .process-caption {
+      margin: 14px auto 0;
+      font-size: 26px;
+      line-height: 1.22;
+      color: #334155;
+      max-width: 1000px;
+    }
+
+    .platform-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .platform {
+      border-radius: 999px;
+      padding: 10px 16px 12px;
+      font-size: 22px;
+      line-height: 1;
+      font-weight: 760;
+      color: var(--moss);
+      background: rgba(238, 243, 231, 0.54);
+      border: 1px solid rgba(69, 111, 85, 0.24);
+    }
+
+    .flyer-stack {
+      position: relative;
+      height: 205px;
+      margin: 24px 0 28px;
+    }
+
+    .flyer {
+      position: absolute;
+      width: 178px;
+      height: 120px;
+      border: 2px solid #cbd5e1;
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, .08);
+      padding: 16px;
+      color: #94a3b8;
+      font-weight: 760;
+      font-size: 20px;
+    }
+
+    .flyer:before,
+    .flyer:after {
+      content: "";
+      display: block;
+      height: 10px;
+      border-radius: 3px;
+      background: #dbe4ee;
+      margin-bottom: 10px;
+    }
+
+    .flyer.one { left: 38px; top: 32px; transform: rotate(-8deg); }
+    .flyer.two { left: 176px; top: 18px; transform: rotate(5deg); }
+    .flyer.three { left: 314px; top: 46px; transform: rotate(-3deg); }
+
+    .phone-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 24px 0 26px;
+    }
+
+    .phone {
+      border: 2px solid #bfdbfe;
+      border-radius: 16px;
+      background: #ffffff;
+      height: 196px;
+      padding: 16px 14px;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, .08);
+    }
+
+    .screen-line {
+      height: 12px;
+      background: #dbeafe;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .screen-block {
+      height: 72px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #dbeafe, #dcfce7);
+      margin-bottom: 12px;
+    }
+
+    .hook {
+      font-size: 20px;
+      line-height: 1.15;
+      font-weight: 780;
+      color: #1d4ed8;
+    }
+
+    .attention-image {
+      width: 100%;
+      height: 220px;
+      border-radius: 8px;
+      object-fit: cover;
+      object-position: center;
+      border: 1px solid #d7e0ea;
+      background: #fff;
+      display: block;
+      margin: 24px 0 26px;
+    }
+
+    .formula {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 42px;
+    }
+
+    .step {
+      border-radius: 8px;
+      padding: 28px 24px;
+      min-height: 240px;
+      border: 2px solid var(--line);
+    }
+
+    .step h3 {
+      font-size: 31px;
+      margin: 0 0 14px;
+    }
+
+    .step p {
+      font-size: 25px;
+      line-height: 1.22;
+      color: #34495f;
+    }
+
+    .essay-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 20px;
+    }
+
+    .essay {
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      background: #f8fafc;
+      padding: 24px 26px;
+    }
+
+    .essay.after {
+      border-color: #93c5fd;
+      background: #fbfdff;
+    }
+
+    .essay h3 {
+      font-size: 27px;
+      margin: 0 0 18px;
+    }
+
+    .essay p {
+      font-family: var(--serif);
+      font-size: 23px;
+      line-height: 1.34;
+      color: #374151;
+      margin-bottom: 17px;
+    }
+
+    .dim { color: #95a1ae; }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .check {
+      border-top: 6px solid var(--blue);
+      background: #f8fafc;
+      padding: 26px 24px 28px;
+      min-height: 230px;
+    }
+
+    .check h3 {
+      font-size: 34px;
+      margin: 0 0 18px;
+    }
+
+    .check p {
+      font-size: 25px;
+      line-height: 1.22;
+      color: #334155;
+    }
+
+    .refs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 44px;
+      row-gap: 28px;
+      margin-top: 30px;
+      max-width: 1320px;
+    }
+
+    .ref-section {
+      margin: 0;
+    }
+
+    .ref-section h3 {
+      margin: 0 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--line);
+      font-size: 22px;
+      line-height: 1.1;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: .035em;
+    }
+
+    .ref-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .bib-entry {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      column-gap: 16px;
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.28;
+      color: #334155;
+    }
+
+    .bib-entry a {
+      color: #1d4ed8;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .source-tag {
+      display: inline-block;
+      color: #64748b;
+      font-size: 20px;
+      font-weight: 760;
+      line-height: 1.28;
+    }
+
+    .ref-text {
+      min-width: 0;
+    }
+
+    .ref-url {
+      display: block;
+      margin-top: 4px;
+      font-size: 19px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .slide-title-only {
+      grid-template-rows: 1fr auto;
+      align-items: center;
+    }
+
+    .slide-content {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 22px;
+    }
+  
+
+    @font-face {
+      font-family: "Departure Mono";
+      src: url("./assets/fonts/DepartureMono-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "EB Garamond";
+      src: url("./assets/fonts/EBGaramond-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "EB Garamond";
+      src: url("./assets/fonts/EBGaramond-Italic.ttf") format("truetype");
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+
+    .deck {
+      width: 1600px;
+      height: 900px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 4;
+      transform-origin: center center;
+      background: #fffaf0;
+      overflow: hidden;
+    }
+
+    .photo-backdrop {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image: url("./assets/vibe-shadows-only.png");
+      background-size: 116% 116%;
+      background-position: center;
+      filter: saturate(0.86) brightness(1.16);
+      opacity: 0.56;
+      transform: translate3d(-4.5%, -2.8%, 0) scale(1.08) rotate(-0.25deg);
+      transform-origin: 55% 34%;
+      animation: shadowPlateDrift 7.5s ease-in-out infinite alternate;
+      backface-visibility: hidden;
+      contain: paint;
+      will-change: transform, opacity;
+    }
+
+    @keyframes shadowPlateDrift {
+      from { transform: translate3d(-4.5%, -2.8%, 0) scale(1.08) rotate(-0.25deg); opacity: 0.34; }
+      45% { transform: translate3d(4.8%, 1.8%, 0) scale(1.09) rotate(0.28deg); opacity: 0.46; }
+      to { transform: translate3d(1.2%, 4.2%, 0) scale(1.085) rotate(-0.08deg); opacity: 0.39; }
+    }
+
+    .eyebrow,
+    .footer,
+    .mini-label,
+    .slide-number,
+    .source-tag,
+    .platform,
+    .chip,
+    .socials a {
+      font-family: var(--mono);
+    }
+
+    .eyebrow {
+      color: var(--moss, #456f55);
+      letter-spacing: .08em;
+      font-size: 18px;
+    }
+
+    .big-title,
+    .headline {
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .big-title { font-size: 86px; max-width: 1180px; }
+    .big-title em {
+      font-style: italic;
+    }
+    .headline { font-size: 62px; max-width: 1260px; }
+    .headline strong {
+      font-weight: 800;
+    }
+    .subtitle { font-size: 38px; max-width: 980px; }
+
+    .panel,
+    .large-card,
+    .wall,
+    .community,
+    .essay,
+    .step,
+    .check {
+      background: rgba(255, 250, 240, .70) !important;
+      border-color: var(--line) !important;
+      box-shadow: 0 22px 55px rgba(92, 69, 48, .07);
+      backdrop-filter: blur(2px);
+    }
+
+    .community,
+    .essay.after,
+    .reader-card {
+      box-shadow: inset 0 0 0 2px rgba(69, 111, 85, .18), 0 22px 55px rgba(92, 69, 48, .07);
+    }
+
+    .knowledge-image,
+    .attention-image,
+    .process-image {
+      border-color: rgba(92, 69, 48, .18);
+      box-shadow: 0 18px 40px rgba(36, 27, 22, .12);
+    }
+
+    .knowledge-image,
+    .attention-image {
+      box-shadow: none;
+    }
+
+    .footer { color: rgba(36, 27, 22, .52); }
+    .footer a { color: rgba(36, 27, 22, .70); }
+    .slide-number { color: rgba(36, 27, 22, .48); }
+
+    .refs { max-width: 1380px; }
+    .ref-section h3 { color: rgba(36,27,22,.72); }
+    .bib-entry { font-size: 19px; }
+    .ref-url { color: #456f55 !important; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .photo-backdrop { animation: none; }
+    }
+
+    .slide:not(.active) {
+      display: none !important;
+    }
+
+    .slide.active {
+      display: grid !important;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="sun-wash" aria-hidden="true"></div>
+  <div class="table-edge" aria-hidden="true"></div>
+  <main class="deck">
+    <div class="photo-backdrop" aria-hidden="true"></div>
+    <section id="slide-01" data-slide-id="slide-01" data-slide-time="60" class="slide slide-title-only">
+    <div>
+      <h1 class="big-title">Professional English is not <em>perfect</em> English.</h1>
+      <p class="subtitle">Make readers care, trust, and act.</p>
+      <div class="speaker">
+        <p class="speaker-name">Jheng-Hong (Matt) YANG</p>
+        <p class="speaker-meta">Founder, Stencilzeit</p>
+        <p class="speaker-line">Consulting, Engineering, and Technical Services around DataSys</p>
+        <p class="speaker-cred">ex: UWaterloo PhD · NAVER LABS Europe · TSMC R&amp;D</p>
+        <div class="socials" aria-label="Speaker links">
+          <a href="mailto:jhyang@stencilzeit.com">Email</a>
+          <a href="https://justram.github.io/">Homepage</a>
+          <a href="https://scholar.google.com/citations?hl=en&user=n3xCLnMAAAAJ">Scholar</a>
+          <a href="https://github.com/justram">GitHub</a>
+          <a href="https://www.linkedin.com/in/jheng-hong-matt-yang-64692685">LinkedIn</a>
+          <a href="https://twitter.com/mattjustram">X</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><span>© 2026 Jheng-Hong (Matt) YANG. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span><span class="slide-number">01</span></div>
+  </section>
+
+    <section id="slide-02" data-slide-id="slide-02" data-slide-time="90" class="slide slide-content">
+    <div>
+      <p class="eyebrow">Knowledge and value</p>
+      <h2 class="headline">Who decides what counts as <strong>knowledge</strong>?</h2>
+    </div>
+    <div>
+      <div class="knowledge-visual">
+        <div class="wall">
+          <div>
+            <div class="mini-label">Old image</div>
+            <h3>Knowledge as a wall</h3>
+          </div>
+          <img class="knowledge-image" src="./assets/knowledge-wall-cozy.png" alt="Static brick wall representing accumulated facts">
+          <p class="visual-caption">Stable facts accumulate, one brick at a time. Your job is to add one more.</p>
+        </div>
+        <div class="community">
+          <div>
+            <div class="mini-label">Professional reality</div>
+            <h3>Knowledge as a community judgment</h3>
+          </div>
+          <img class="knowledge-image" src="./assets/knowledge-community-cozy.png" alt="Dynamic community of readers, field beliefs, methods, and a result">
+          <p class="visual-caption">A result becomes knowledge when a community sees how it changes what they can understand, predict, build, or decide.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><span>© 2026 Jheng-Hong (Matt) YANG. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span><span class="slide-number">02</span></div>
+  </section>
+
+    <section id="slide-03" data-slide-id="slide-03" data-slide-time="90" class="slide slide-content">
+    <div>
+      <p class="eyebrow">Audience and attention</p>
+      <h2 class="headline">Communication is not passing out flyers.</h2>
+    </div>
+    <div>
+      <div class="two-col">
+        <div class="panel">
+          <h3>Just distributing information</h3>
+          <img class="attention-image" src="./assets/random-flyers-cozy.png" alt="Flyers scattered toward an untargeted audience">
+          <p>Same message, random audience, hope someone cares.</p>
+        </div>
+        <div class="panel" style="border-color:#93c5fd;background:#fbfdff">
+          <h3>Designing for attention</h3>
+          <img class="attention-image" src="./assets/attention-design-cozy.png" alt="A student choosing online communication formats designed for attention">
+          <p>Reader, channel, timing, and format are part of the message.</p>
+          <div class="platform-strip">
+            <span class="platform">Instagram</span>
+            <span class="platform">TikTok</span>
+            <span class="platform">YouTube</span>
+            <span class="platform">Threads</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><span>© 2026 Jheng-Hong (Matt) YANG. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span><span class="slide-number">03</span></div>
+  </section>
+
+    <section id="slide-04" data-slide-id="slide-04" data-slide-time="90" class="slide slide-content">
+    <div>
+      <p class="eyebrow">Reader attention</p>
+      <h2 class="headline">Teachers are <strong>paid</strong> to read. Professional readers are <strong>not</strong>.</h2>
+    </div>
+    <div>
+      <div class="two-col">
+        <div class="panel">
+          <h3>Teacher</h3>
+          <ul>
+            <li>Knows the assignment has value</li>
+            <li>Reads to evaluate your understanding</li>
+            <li>May continue even when bored</li>
+          </ul>
+        </div>
+        <div class="panel" style="border-color:#fecaca;background:#fffafa">
+          <h3>Experts</h3>
+          <ul>
+            <li>Has limited attention</li>
+            <li>Reads only if the text helps</li>
+            <li>Can stop after three sentences</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><span>© 2026 Jheng-Hong (Matt) YANG. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span><span class="slide-number">04</span></div>
+  </section>
+
+    <section id="slide-05" data-slide-id="slide-05" data-slide-time="90" class="slide slide-content">
+    <div>
+      <p class="eyebrow">The outdated reflex</p>
+      <h2 class="headline">Old forms create stability. Real readers search for instability signals.</h2>
+    </div>
+    <div>
+      <div class="bad-good">
+        <div class="panel">
+          <h3>Old reflex</h3>
+          <p><span class="chip b">Background</span> → <span class="chip b">Definition</span> → <span class="chip b">Explanation</span> → <span class="chip b">Thesis</span></p>
+          <p>Useful sometimes. But it can delay the reason to care.</p>
+        </div>
+        <div class="panel" style="border-color:#fed7aa;background:#fffaf3">
+          <h3>Professional pressure</h3>
+          <p><span class="chip o">What is unstable?</span> <span class="chip r">Why does it matter?</span> <span class="chip g">What changes?</span></p>
+          <p>The reader needs value before detail.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><span>© 2026 Jheng-Hong (Matt) YANG. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span><span class="slide-number">05</span></div>
+  </section>
+
+    <section id="slide-06" data-slide-id="slide-06" data-slide-time="120" class="slide slide-content">
+    <div>
+      <p class="eyebrow">Why readers get lost</p>
+      <h2 class="headline">The text sits between two ways of seeing the world.</h2>
+    </div>
+    <div>
+      <img class="process-image" src="./assets/text-between-writer-reader.png" alt="Chalkboard diagram showing text between the writer's write and think process and the readers' path toward the world">
+    </div>
+    <div class="footer"><span>© 2026 Jheng-Hong (Matt) YANG. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span><span class="slide-number">06</span></div>
+  </section>
+
+    <section id="slide-07" data-slide-id="slide-07" data-slide-time="120" class="slide slide-content">
+    <div>
+      <p class="eyebrow">The practical tool</p>
+      <h2 class="headline">Turn information into value with four moves.</h2>
+    </div>
+    <div>
+      <div class="formula">
+        <div class="step" style="background:var(--blue-soft);border-color:#93c5fd">
+          <h3>Belief</h3>
+          <p>What do readers currently think, assume, use, or optimize?</p>
+        </div>
+        <div class="step" style="background:var(--orange-soft);border-color:#fed7aa">
+          <h3>Instability</h3>
+          <p>What no longer fits, explains, works, or remains known?</p>
+        </div>
+        <div class="step" style="background:var(--red-soft);border-color:#fecaca">
+          <h3>Stakes</h3>
+          <p>Why does this problem cost readers attention, time, accuracy, or opportunity?</p>
+        </div>
+        <div class="step" style="background:var(--green-soft);border-color:#bbf7d0">
+          <h3>Claim</h3>
+          <p>What does your work now help readers understand, decide, or do?</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><span>© 2026 Jheng-Hong (Matt) YANG. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span><span class="slide-number">07</span></div>
+  </section>
+
+    <section id="slide-08" data-slide-id="slide-08" data-slide-time="150" class="slide slide-content">
+    <div>
+      <p class="eyebrow">Real example</p>
+      <h2 class="headline">Same topic. Stronger reader value.</h2>
+    </div>
+    <div>
+      <div class="essay-grid">
+        <div class="essay">
+          <h3>Before: explains the area</h3>
+          <p><span class="dim">Deep research agents solve complex information-seeking tasks through iterative retrieval, document inspection, and multi-step evidence synthesis.</span></p>
+          <p>Because <span class="chip b">retrieval is central</span>, many systems rely on <span class="chip b">dense or neural retrievers</span>, while BM25 is often treated as a weak baseline.</p>
+          <p><span class="chip g">Do strong deep-research agents still require neural retrievers?</span></p>
+        </div>
+        <div class="essay after">
+          <h3>After: challenges an assumption</h3>
+          <p>Retriever effectiveness is <span class="chip b">widely treated as the hard ceiling</span> of information-seeking systems.</p>
+          <p><span class="chip o">However</span>, as LLMs become better at reasoning and tool use, systems operate through an <span class="chip o">agentic loop</span>.</p>
+          <p>We <span class="chip r">risk overemphasizing retriever improvement</span> while overlooking other opportunities.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><span>© 2026 Jheng-Hong (Matt) YANG. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span><span class="slide-number">08</span></div>
+  </section>
+
+    <section id="slide-09" data-slide-id="slide-09" data-slide-time="90" class="slide slide-content">
+    <div>
+      <p class="eyebrow">Closing checklist</p>
+      <h2 class="headline">Before you send professional English, ask four questions.</h2>
+    </div>
+    <div>
+      <div class="checklist">
+        <div class="check">
+          <h3>Reader</h3>
+          <p>Who decides whether this is useful?</p>
+        </div>
+        <div class="check" style="border-color:var(--orange)">
+          <h3>Belief</h3>
+          <p>What do they already think or expect?</p>
+        </div>
+        <div class="check" style="border-color:var(--red)">
+          <h3>Problem</h3>
+          <p>What is missing, unstable, risky, or changing?</p>
+        </div>
+        <div class="check" style="border-color:var(--green)">
+          <h3>Change</h3>
+          <p>What should they understand or do next?</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><span>© 2026 Jheng-Hong (Matt) YANG. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span><span class="slide-number">09</span></div>
+  </section>
+
+    <section id="slide-10" data-slide-id="slide-10" data-slide-time="40" class="slide slide-content">
+    <div>
+      <p class="eyebrow">References</p>
+      <h2 class="headline">References and further reading</h2>
+    </div>
+    <div>
+      <div class="refs">
+        <div class="ref-section">
+          <h3>Primary sources</h3>
+          <div class="ref-list">
+            <p class="bib-entry"><span class="source-tag">Video</span><span class="ref-text">McEnerney, L. (2014). <em>Leadership Lab: The Craft of Writing Effectively</em>. UChicago Social Sciences.<a class="ref-url" href="https://youtu.be/vtIzMaLkCaM">youtu.be/vtIzMaLkCaM</a></span></p>
+            <p class="bib-entry"><span class="source-tag">Handout</span><span class="ref-text">McEnerney, L. (2013). <em>The Problem of the Problem</em>. University of Chicago Writing Program, for The Ohio State University.<a class="ref-url" href="https://cpb-us-w2.wpmucdn.com/u.osu.edu/dist/5/7046/files/2014/10/UnivChic_WritingProg-1grt232.pdf">u.osu.edu/.../UnivChic_WritingProg-1grt232.pdf</a></span></p>
+          </div>
+        </div>
+        <div class="ref-section">
+          <h3>Further reading</h3>
+          <div class="ref-list">
+            <p class="bib-entry"><span class="source-tag">Course</span><span class="ref-text">Lin, J. (2023). <em>The Art and Science of Empirical Computer Science</em>. Course materials, Fall 2023.<a class="ref-url" href="https://github.com/lintool/art-science-empirical-cs-2023f">github.com/lintool/art-science-empirical-cs-2023f</a></span></p>
+            <p class="bib-entry"><span class="source-tag">Book</span><span class="ref-text">Wang, D., & Barabási, A.-L. (2021). <em>The Science of Science</em>. Cambridge University Press.<a class="ref-url" href="https://www.dashunwang.com/book/the-science-of-science">dashunwang.com/book/the-science-of-science</a></span></p>
+            <p class="bib-entry"><span class="source-tag">Book</span><span class="ref-text">Williams, J. M. (2006). <em>Style: Ten Lessons in Clarity and Grace</em> (8th ed.). Pearson Longman.<a class="ref-url" href="https://search.worldcat.org/title/315815229">WorldCat record</a></span></p>
+            <p class="bib-entry"><span class="source-tag">Book</span><span class="ref-text">呂育道（2014）。《Paper・論文・報告如何寫作》。新陸書局。<a class="ref-url" href="https://books.google.com/books/about/Paper_%E8%AB%96%E6%96%87_%E5%A0%B1%E5%91%8A%E5%A6%82%E4%BD%95%E5%AF%AB%E4%BD%9C.html?id=VhtwrgEACAAJ">Google Books record</a></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><span>© 2026 Jheng-Hong (Matt) YANG. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span><span class="slide-number">10</span></div>
+  </section>
+  </main>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const slideIds = slides.map((slide) => `#${slide.id}`);
+    const DECK_WIDTH = 1600;
+    const DECK_HEIGHT = 900;
+
+    function normalizeHash(hash) {
+      if (!hash || hash === "#" || hash === "#~next") return slideIds[0];
+      const clean = hash.replace(/~next$/, "");
+      if (slideIds.includes(clean)) return clean;
+      return slideIds[0];
+    }
+
+    function indexFromHash(hash) {
+      const normalized = normalizeHash(hash);
+      const index = slideIds.indexOf(normalized);
+      return index >= 0 ? index : 0;
+    }
+
+    function showSlide(index, updateHash = true) {
+      const clamped = Math.max(0, Math.min(slides.length - 1, index));
+      slides.forEach((slide, i) => slide.classList.toggle("active", i === clamped));
+      if (updateHash && location.hash !== slideIds[clamped]) {
+        history.replaceState(null, "", slideIds[clamped]);
+      }
+    }
+
+    function resizeDeck() {
+      const deck = document.querySelector(".deck");
+      const scale = Math.min(window.innerWidth / DECK_WIDTH, window.innerHeight / DECK_HEIGHT);
+      deck.style.transform = `translate(-50%, -50%) scale(${scale})`;
+    }
+
+    function go(delta) { showSlide(indexFromHash(location.hash) + delta); }
+
+    window.addEventListener("resize", () => {
+      resizeDeck();
+    });
+    window.addEventListener("hashchange", () => showSlide(indexFromHash(location.hash), false));
+    window.addEventListener("keydown", (event) => {
+      if (["ArrowRight", " ", "PageDown", "l", "j"].includes(event.key)) { event.preventDefault(); go(1); }
+      if (["ArrowLeft", "PageUp", "h", "k"].includes(event.key)) { event.preventDefault(); go(-1); }
+      if (event.key === "Home") { event.preventDefault(); showSlide(0); }
+      if (event.key === "End") { event.preventDefault(); showSlide(slides.length - 1); }
+    });
+
+    window.miniPresenter = {
+      next() { go(1); },
+      prev() { go(-1); },
+      first() { showSlide(0); },
+      last() { showSlide(slides.length - 1); },
+      goto(hash) { showSlide(indexFromHash(hash)); },
+      getCurrentSlide() { return normalizeHash(location.hash); },
+      getSlideList() { return slideIds; },
+      getConfig() {
+        return {
+          title: "Professional English is not perfect English",
+          notes: { source: "files" },
+          preview: { relativeHash: true }
+        };
+      }
+    };
+
+    resizeDeck();
+    showSlide(indexFromHash(location.hash), !location.hash);
+
+    const photoBackdrop = document.querySelector(".photo-backdrop");
+    if (photoBackdrop) {
+      photoBackdrop.style.animation = "none";
+      photoBackdrop.offsetHeight;
+      photoBackdrop.style.animation = "";
+    }
+  </script>
+</body>
+</html>

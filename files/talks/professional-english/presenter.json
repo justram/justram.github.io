@@ -1,0 +1,35 @@
+{
+  "title": "Professional English is not perfect English",
+  "notes": { "source": "files" },
+  "preview": { "relativeHash": true },
+  "timer": {
+    "mode": "countdown-slide",
+    "transitionSeconds": 2,
+    "slides": {
+      "#slide-01": 60,
+      "#slide-02": 90,
+      "#slide-03": 90,
+      "#slide-04": 90,
+      "#slide-05": 90,
+      "#slide-06": 120,
+      "#slide-07": 120,
+      "#slide-08": 150,
+      "#slide-09": 90,
+      "#slide-10": 40
+    }
+  },
+  "keyboard": {
+    "next": ["ArrowRight", "Space", "PageDown", "l", "j"],
+    "prev": ["ArrowLeft", "PageUp", "h", "k"],
+    "first": ["Home"],
+    "last": ["End"]
+  },
+  "shortcuts": {
+    "fullscreen": ["f"],
+    "presenter": ["p"],
+    "questions": ["q"],
+    "recording": ["Shift+R"]
+  },
+  "draw": { "color": "#b96a57", "size": 0.004 },
+  "laser": { "color": "#456f55", "size": 0.012 }
+}

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-labelledby="title desc">
+  <title id="title">Just distributing information</title>
+  <desc id="desc">Three simple sheets sent outward without a target, representing random distribution.</desc>
+  <rect width="900" height="420" fill="#fffaf0"/>
+  <g fill="#fff7e8" stroke="#7a4a2b" stroke-width="3">
+    <rect x="180" y="126" width="150" height="106" rx="3" transform="rotate(-8 255 179)"/>
+    <rect x="374" y="100" width="150" height="106" rx="3" transform="rotate(4 449 153)"/>
+    <rect x="570" y="146" width="150" height="106" rx="3" transform="rotate(-3 645 199)"/>
+  </g>
+  <g stroke="#456f55" stroke-width="4" stroke-linecap="round">
+    <path d="M196 154h86"/>
+    <path d="M198 180h102"/>
+    <path d="M393 130h92"/>
+    <path d="M392 156h108"/>
+    <path d="M590 176h94"/>
+    <path d="M590 202h108"/>
+  </g>
+  <g fill="none" stroke="#b96a57" stroke-width="3" stroke-linecap="round" stroke-dasharray="9 12">
+    <path d="M248 260 C210 314 158 324 118 344"/>
+    <path d="M450 226 C444 298 410 326 376 352"/>
+    <path d="M642 280 C696 314 742 328 790 350"/>
+  </g>
+</svg>

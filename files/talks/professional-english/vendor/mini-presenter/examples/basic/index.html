@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>mini-presenter demo</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+        background: #0f172a;
+        color: #e2e8f0;
+      }
+
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .deck {
+        width: 1920px;
+        height: 1080px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-origin: center center;
+        background: #0f172a;
+      }
+
+      .slide {
+        display: none;
+        box-sizing: border-box;
+        height: 1080px;
+        width: 1920px;
+        padding: 96px 140px;
+        align-content: center;
+      }
+
+      .slide.active {
+        display: grid;
+      }
+
+      h1 {
+        font-size: 4rem;
+        margin: 0 0 1rem;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        margin-top: 0;
+      }
+
+      p,
+      li {
+        font-size: 1.6rem;
+        line-height: 1.6;
+      }
+
+      ul {
+        padding-left: 2rem;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        background: #334155;
+        color: #cbd5f5;
+        font-size: 1rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .steps {
+        margin-top: 1.5rem;
+      }
+
+      .step.hidden {
+        visibility: hidden;
+      }
+
+      footer {
+        align-self: end;
+        font-size: 1rem;
+        color: #94a3b8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="deck">
+      <section class="slide" data-slide="1">
+      <div>
+        <span class="tag">mini-presenter</span>
+        <h1>Welcome</h1>
+        <p>Press → or Space to advance. Use ← to go back.</p>
+      </div>
+      <footer>#1</footer>
+    </section>
+
+    <section class="slide" data-slide="2">
+      <div>
+        <h2>Why a demo?</h2>
+        <ul>
+          <li>Verify slide navigation logic.</li>
+          <li>Test hash-based slide sync.</li>
+          <li>Exercise build-step handling.</li>
+        </ul>
+      </div>
+      <footer>#2</footer>
+    </section>
+
+    <section class="slide" data-slide="3">
+      <div>
+        <h2>Mini presenter goals</h2>
+        <ul>
+          <li>Keep slides in plain HTML.</li>
+          <li>Offer a clean presenter view.</li>
+          <li>Synchronize display + controls.</li>
+        </ul>
+      </div>
+      <footer>#3</footer>
+    </section>
+
+    <section class="slide" data-slide="4">
+      <div>
+        <h2>Build steps demo</h2>
+        <p>Each bullet reveals with another key press.</p>
+        <ul class="steps">
+          <li class="step">Step one: highlight the key idea.</li>
+          <li class="step">Step two: add supporting detail.</li>
+          <li class="step">Step three: conclude the thought.</li>
+        </ul>
+      </div>
+      <footer>#4</footer>
+    </section>
+
+    <section class="slide" data-slide="5">
+      <div>
+        <h2>Hash navigation</h2>
+        <p>Jump directly to <strong>#3</strong> or <strong>#5</strong> in the URL.</p>
+      </div>
+      <footer>#5</footer>
+    </section>
+
+    <section class="slide" data-slide="6">
+      <div>
+        <h2>What’s next</h2>
+        <ul>
+          <li>Presenter controls</li>
+          <li>WebSocket sync</li>
+          <li>Speaker notes</li>
+        </ul>
+      </div>
+      <footer>#6</footer>
+    </section>
+
+      <section class="slide" data-slide="7">
+        <div>
+          <h2>Thanks!</h2>
+          <p>Demo complete. Try navigating again.</p>
+        </div>
+        <footer>#7</footer>
+      </section>
+    </div>
+
+    <script>
+      const deck = document.querySelector(".deck");
+      const DECK_WIDTH = 1920;
+      const DECK_HEIGHT = 1080;
+
+      function scaleDeck() {
+        const scaleX = window.innerWidth / DECK_WIDTH;
+        const scaleY = window.innerHeight / DECK_HEIGHT;
+        const scale = Math.min(scaleX, scaleY);
+        deck.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      }
+
+      window.addEventListener("resize", scaleDeck);
+      scaleDeck();
+
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      let slideIndex = 0;
+      let stepIndex = 0;
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function applySteps(slide) {
+        const steps = Array.from(slide.querySelectorAll(".step"));
+        steps.forEach((step, index) => {
+          step.classList.toggle("hidden", index >= stepIndex);
+        });
+        return steps.length;
+      }
+
+      function updateHash() {
+        const slideNumber = slides[slideIndex].dataset.slide;
+        const stepSuffix = stepIndex > 0 ? `.${stepIndex}` : "";
+        history.replaceState(null, "", `#${slideNumber}${stepSuffix}`);
+      }
+
+      function showSlide(index, { updateHash: shouldUpdateHash = true } = {}) {
+        slideIndex = clamp(index, 0, slides.length - 1);
+        slides.forEach((slide, idx) => {
+          slide.classList.toggle("active", idx === slideIndex);
+        });
+        const stepCount = applySteps(slides[slideIndex]);
+        stepIndex = clamp(stepIndex, 0, stepCount);
+        applySteps(slides[slideIndex]);
+
+        if (shouldUpdateHash) {
+          updateHash();
+        }
+      }
+
+      function parseHash(rawValue) {
+        const [slideValue, stepValue] = rawValue.split(".");
+        const slideNumber = Number.parseInt(slideValue, 10);
+        const index = Number.isNaN(slideNumber)
+          ? 0
+          : slides.findIndex((slide) => Number(slide.dataset.slide) === slideNumber);
+        const parsedStep = Number.parseInt(stepValue, 10);
+        return {
+          index: index === -1 ? 0 : index,
+          step: Number.isNaN(parsedStep) ? 0 : parsedStep,
+        };
+      }
+
+      function resolveRelativeHash(rawValue) {
+        const match = rawValue.match(/^(.*)~(next|prev)$/);
+        if (!match) {
+          return false;
+        }
+        const [, baseValue, direction] = match;
+        const baseState = baseValue
+          ? parseHash(baseValue)
+          : { index: slideIndex, step: stepIndex };
+        slideIndex = clamp(baseState.index, 0, slides.length - 1);
+        stepIndex = Math.max(0, baseState.step);
+        showSlide(slideIndex, { updateHash: false });
+        if (direction === "next") {
+          next({ updateHash: true });
+        } else {
+          prev({ updateHash: true });
+        }
+        return true;
+      }
+
+      function syncFromHash() {
+        const rawValue = window.location.hash.replace("#", "");
+        if (resolveRelativeHash(rawValue)) {
+          return;
+        }
+        const parsed = parseHash(rawValue);
+        stepIndex = parsed.step;
+        showSlide(parsed.index, { updateHash: false });
+      }
+
+      function next({ updateHash: shouldUpdateHash = true } = {}) {
+        const steps = Array.from(slides[slideIndex].querySelectorAll(".step"));
+        if (stepIndex < steps.length) {
+          stepIndex += 1;
+          applySteps(slides[slideIndex]);
+          if (shouldUpdateHash) {
+            updateHash();
+          }
+          return;
+        }
+        stepIndex = 0;
+        showSlide(slideIndex + 1, { updateHash: shouldUpdateHash });
+      }
+
+      function prev({ updateHash: shouldUpdateHash = true } = {}) {
+        if (stepIndex > 0) {
+          stepIndex -= 1;
+          applySteps(slides[slideIndex]);
+          if (shouldUpdateHash) {
+            updateHash();
+          }
+          return;
+        }
+        const nextIndex = clamp(slideIndex - 1, 0, slides.length - 1);
+        slideIndex = nextIndex;
+        const steps = Array.from(slides[slideIndex].querySelectorAll(".step"));
+        stepIndex = steps.length;
+        showSlide(slideIndex, { updateHash: shouldUpdateHash });
+      }
+
+      window.addEventListener("hashchange", syncFromHash);
+      window.addEventListener("keydown", (event) => {
+        if (["ArrowRight", " ", "PageDown"].includes(event.key)) {
+          event.preventDefault();
+          next();
+        }
+        if (["ArrowLeft", "PageUp"].includes(event.key)) {
+          event.preventDefault();
+          prev();
+        }
+      });
+
+      window.miniPresenter = {
+        getSlideList() {
+          return slides.map((slide) => `#${slide.dataset.slide}`);
+        },
+        getCurrentSlide() {
+          return window.location.hash || `#${slides[slideIndex].dataset.slide}`;
+        },
+      };
+
+      syncFromHash();
+    </script>
+  </body>
+</html>

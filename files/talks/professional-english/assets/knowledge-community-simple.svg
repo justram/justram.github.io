@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-labelledby="title desc">
+  <title id="title">Knowledge as community judgment</title>
+  <desc id="desc">A simple network diagram showing readers, tools, field beliefs, and a result connected around a central claim.</desc>
+  <rect width="900" height="420" fill="#fffaf0"/>
+  <g fill="none" stroke="#7a4a2b" stroke-width="3" stroke-linecap="round">
+    <path d="M230 210 L450 140 L670 210"/>
+    <path d="M230 210 L450 286 L670 210"/>
+    <path d="M450 140 L450 286"/>
+  </g>
+  <g font-family="Georgia, serif" font-size="24" fill="#241b16" text-anchor="middle">
+    <circle cx="230" cy="210" r="70" fill="#fff7e8" stroke="#7a4a2b" stroke-width="3"/>
+    <text x="230" y="217">Readers</text>
+    <circle cx="450" cy="140" r="70" fill="#eef3e7" stroke="#456f55" stroke-width="3"/>
+    <text x="450" y="132">Field</text>
+    <text x="450" y="160">beliefs</text>
+    <circle cx="670" cy="210" r="70" fill="#fff7e8" stroke="#7a4a2b" stroke-width="3"/>
+    <text x="670" y="217">Methods</text>
+    <circle cx="450" cy="286" r="70" fill="#eef3e7" stroke="#456f55" stroke-width="3"/>
+    <text x="450" y="278">Your</text>
+    <text x="450" y="306">result</text>
+  </g>
+  <path d="M330 210 C360 184 394 184 424 210 C454 236 488 236 518 210 C548 184 582 184 612 210"
+        fill="none" stroke="#b96a57" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 12"/>
+</svg>
