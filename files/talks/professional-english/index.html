@@ -77,6 +77,69 @@
       display: grid;
     }
 
+    .deck-controls {
+      position: fixed;
+      left: 50%;
+      bottom: max(18px, env(safe-area-inset-bottom));
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateX(-50%);
+      padding: 8px;
+      border: 1px solid rgba(92, 69, 48, 0.18);
+      border-radius: 999px;
+      background: rgba(255, 250, 240, 0.78);
+      box-shadow: 0 14px 42px rgba(64, 48, 34, 0.14), 0 1px 0 rgba(255, 255, 255, 0.72) inset;
+      backdrop-filter: blur(12px) saturate(1.05);
+      -webkit-backdrop-filter: blur(12px) saturate(1.05);
+    }
+
+    .deck-control {
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(36, 27, 22, 0.88);
+      color: #fffaf0;
+      font: 700 24px/1 var(--mono);
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .deck-control:disabled {
+      opacity: 0.38;
+      cursor: default;
+    }
+
+    .deck-control:focus-visible {
+      outline: 3px solid rgba(69, 111, 85, 0.34);
+      outline-offset: 3px;
+    }
+
+    .deck-progress {
+      min-width: 58px;
+      color: rgba(36, 27, 22, 0.72);
+      font: 700 13px/1 var(--mono);
+      text-align: center;
+      user-select: none;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .deck-controls {
+        opacity: 0.68;
+        transition: opacity 160ms ease, transform 160ms ease;
+      }
+
+      .deck-controls:hover,
+      .deck-controls:focus-within {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-2px);
+      }
+    }
+
     .eyebrow {
       margin: 0 0 14px;
       font-size: 21px;
@@ -1334,12 +1397,22 @@
     <div class="footer"><span>© 2026 Jheng-Hong (Matt) YANG. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span><span class="slide-number">10</span></div>
   </section>
   </main>
+  <nav class="deck-controls" aria-label="Slide navigation">
+    <button class="deck-control" type="button" data-deck-prev aria-label="Previous slide">‹</button>
+    <span class="deck-progress" data-deck-progress aria-live="polite">1 / 10</span>
+    <button class="deck-control" type="button" data-deck-next aria-label="Next slide">›</button>
+  </nav>
 
   <script>
     const slides = Array.from(document.querySelectorAll(".slide"));
     const slideIds = slides.map((slide) => `#${slide.id}`);
+    const prevButton = document.querySelector("[data-deck-prev]");
+    const nextButton = document.querySelector("[data-deck-next]");
+    const progressDisplay = document.querySelector("[data-deck-progress]");
     const DECK_WIDTH = 1600;
     const DECK_HEIGHT = 900;
+    let touchStartX = 0;
+    let touchStartY = 0;
 
     function normalizeHash(hash) {
       if (!hash || hash === "#" || hash === "#~next") return slideIds[0];
@@ -1354,9 +1427,16 @@
       return index >= 0 ? index : 0;
     }
 
+    function updateControls(index) {
+      if (prevButton) prevButton.disabled = index <= 0;
+      if (nextButton) nextButton.disabled = index >= slides.length - 1;
+      if (progressDisplay) progressDisplay.textContent = `${index + 1} / ${slides.length}`;
+    }
+
     function showSlide(index, updateHash = true) {
       const clamped = Math.max(0, Math.min(slides.length - 1, index));
       slides.forEach((slide, i) => slide.classList.toggle("active", i === clamped));
+      updateControls(clamped);
       if (updateHash && location.hash !== slideIds[clamped]) {
         history.replaceState(null, "", slideIds[clamped]);
       }
@@ -1370,6 +1450,9 @@
 
     function go(delta) { showSlide(indexFromHash(location.hash) + delta); }
 
+    prevButton?.addEventListener("click", () => go(-1));
+    nextButton?.addEventListener("click", () => go(1));
+
     window.addEventListener("resize", () => {
       resizeDeck();
     });
@@ -1380,6 +1463,18 @@
       if (event.key === "Home") { event.preventDefault(); showSlide(0); }
       if (event.key === "End") { event.preventDefault(); showSlide(slides.length - 1); }
     });
+    window.addEventListener("touchstart", (event) => {
+      const touch = event.changedTouches[0];
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+    }, { passive: true });
+    window.addEventListener("touchend", (event) => {
+      const touch = event.changedTouches[0];
+      const deltaX = touch.clientX - touchStartX;
+      const deltaY = touch.clientY - touchStartY;
+      if (Math.abs(deltaX) < 48 || Math.abs(deltaX) < Math.abs(deltaY) * 1.35) return;
+      go(deltaX < 0 ? 1 : -1);
+    }, { passive: true });
 
     window.miniPresenter = {
       next() { go(1); },
