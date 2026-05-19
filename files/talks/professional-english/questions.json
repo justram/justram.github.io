@@ -1,23 +1,4 @@
 {
   "version": 1,
-  "questions": [
-    {
-      "id": "1996b71f-e44f-45f3-96d5-ddb9567cebaf",
-      "text": "Hiii",
-      "votes": 0,
-      "voters": [],
-      "answered": false,
-      "createdAt": "2026-05-17T11:43:24.194Z",
-      "updatedAt": "2026-05-17T11:43:24.194Z"
-    },
-    {
-      "id": "84b91dfd-7763-48a1-a290-54a609f910b5",
-      "text": "I love Yuling",
-      "votes": 0,
-      "voters": [],
-      "answered": false,
-      "createdAt": "2026-05-17T11:43:37.477Z",
-      "updatedAt": "2026-05-17T11:43:37.477Z"
-    }
-  ]
+  "questions": []
 }

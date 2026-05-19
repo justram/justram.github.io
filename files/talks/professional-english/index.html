@@ -24,6 +24,8 @@
       --green-soft: rgba(111, 143, 97, 0.17);
       --purple: #7a4a2b;
       --purple-soft: rgba(122, 74, 43, 0.14);
+      --moss: #456f55;
+      --coffee-dark: #7a4a2b;
     }
 
     * { box-sizing: border-box; }
@@ -986,6 +988,107 @@
       text-overflow: ellipsis;
     }
 
+    .signup-layout {
+      display: grid;
+      grid-template-columns: 1fr 430px;
+      gap: 56px;
+      align-items: center;
+      max-width: 1360px;
+      margin-top: 6px;
+    }
+
+    .signup-copy {
+      max-width: 760px;
+    }
+
+    .signup-copy .headline {
+      font-size: 70px;
+      line-height: 0.98;
+      margin-bottom: 22px;
+    }
+
+    .signup-copy .headline strong {
+      font-weight: 800;
+    }
+
+    .signup-subtitle {
+      font-size: 34px;
+      line-height: 1.22;
+      color: var(--muted);
+      margin: 0 0 34px;
+      max-width: 700px;
+    }
+
+    .signup-points {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 760px;
+    }
+
+    .signup-point {
+      min-height: 120px;
+      padding: 18px 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 250, 240, 0.66);
+      box-shadow: 0 18px 44px rgba(92, 69, 48, 0.06);
+    }
+
+    .signup-point .mini-label {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .signup-point p {
+      margin: 0;
+      color: #334155;
+      font-size: 23px;
+      line-height: 1.14;
+    }
+
+    .signup-card {
+      justify-self: end;
+      width: 430px;
+      padding: 26px;
+      border: 1px solid rgba(92, 69, 48, 0.22);
+      border-radius: 10px;
+      background: rgba(255, 250, 240, 0.82);
+      box-shadow: 0 24px 70px rgba(92, 69, 48, 0.11);
+    }
+
+    .signup-card h3 {
+      margin: 0 0 18px;
+      color: var(--ink);
+      font-size: 31px;
+      line-height: 1.08;
+      font-weight: 400;
+    }
+
+    .signup-qr-frame {
+      padding: 16px;
+      border: 1px solid rgba(92, 69, 48, 0.18);
+      border-radius: 8px;
+      background: #fffaf0;
+    }
+
+    .signup-qr-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .signup-link {
+      display: block;
+      margin-top: 18px;
+      color: var(--moss);
+      font-family: var(--mono);
+      font-size: 18px;
+      line-height: 1.2;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
     .slide-title-only {
       grid-template-rows: 1fr auto;
       align-items: center;
@@ -1396,10 +1499,46 @@
     </div>
     <div class="footer"><span>© 2026 Jheng-Hong (Matt) YANG. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span><span class="slide-number">10</span></div>
   </section>
+
+    <section id="slide-11" data-slide-id="slide-11" data-slide-time="45" class="slide slide-content" data-signup-url="https://stencilzeit.kit.com/177c376f5f">
+    <div>
+      <p class="eyebrow">Keep practicing</p>
+    </div>
+    <div>
+      <div class="signup-layout">
+        <div class="signup-copy">
+          <h2 class="headline">Free 7-day practical <strong>GenAI</strong> mini-course</h2>
+          <p class="signup-subtitle">Move from using ChatGPT to understanding how GenAI systems actually work: prompts, documents, images, costs, tools, and local models.</p>
+          <div class="signup-points" aria-label="Course topics">
+            <div class="signup-point">
+              <div class="mini-label">Day 1-2</div>
+              <p>See what LLMs receive</p>
+            </div>
+            <div class="signup-point">
+              <div class="mini-label">Day 3-5</div>
+              <p>Handle files, images, and cost</p>
+            </div>
+            <div class="signup-point">
+              <div class="mini-label">Day 6-7</div>
+              <p>Try tools, agents, and local models</p>
+            </div>
+          </div>
+        </div>
+        <div class="signup-card">
+          <h3>Scan to sign up</h3>
+          <div class="signup-qr-frame">
+            <img src="./assets/genai-newsletter-qr.svg" alt="QR code for the free 7-day practical GenAI course newsletter signup" loading="lazy" decoding="async">
+          </div>
+          <a class="signup-link" href="https://stencilzeit.kit.com/177c376f5f">stencilzeit.kit.com/177c376f5f</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><span>© 2026 Jheng-Hong (Matt) YANG. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span><span class="slide-number">11</span></div>
+  </section>
   </main>
   <nav class="deck-controls" aria-label="Slide navigation">
     <button class="deck-control" type="button" data-deck-prev aria-label="Previous slide">‹</button>
-    <span class="deck-progress" data-deck-progress aria-live="polite">1 / 10</span>
+    <span class="deck-progress" data-deck-progress aria-live="polite">1 / 11</span>
     <button class="deck-control" type="button" data-deck-next aria-label="Next slide">›</button>
   </nav>
 
