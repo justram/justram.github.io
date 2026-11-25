@@ -47,6 +47,17 @@
   .compact-home__intro {
     width: calc(100% - 1.25rem);
     max-width: 640px;
+
+    details { margin-bottom: 1rem; }
+    summary {
+      display: list-item;
+      width: fit-content;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
+    details[open] > summary { margin-bottom: 1rem; }
+    summary:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
     margin: 0 auto;
     font-family: "Newsreader", Georgia, serif;
     text-align: left;
