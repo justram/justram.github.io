@@ -4,7 +4,7 @@
 {% assign item_title = item_title | replace: "Pi-serini", "PI_SERINI_SMALL_CAPS" | replace: "Pi-Serini", "PI_SERINI_SMALL_CAPS" | replace: "PI_SERINI_SMALL_CAPS", '<span class="small-caps">Pi-Serini</span>' %}
 {% assign item_excerpt = item_excerpt | replace: "Pi-serini", "PI_SERINI_SMALL_CAPS" | replace: "Pi-Serini", "PI_SERINI_SMALL_CAPS" | replace: "PI_SERINI_SMALL_CAPS", '<span class="small-caps">Pi-Serini</span>' %}
 
-<article class="compact-entry">
+<article class="compact-entry" lang="en">
   <h4 class="compact-entry__title">
     {{ item_title }}
   </h4>
@@ -23,7 +23,7 @@
       {% if item.location %}<span>{{ item.location }}</span>{% endif %}
       {% if item.date %}
         {% if item.collection == "talks" %}
-          <span>{{ item.date | date: '%B %-d, %Y' }}</span>
+          <span lang="{{ lang }}">{{ item.date | date: ui.talk_date }}</span>
         {% else %}
           <span>{{ item.date | date: '%Y' }}</span>
         {% endif %}
@@ -36,9 +36,9 @@
   {% endif %}
 
   {% if item.slidesurl or item.link %}
-    <p class="compact-entry__actions">
-      {% if item.slidesurl %}<a href="{{ item.slidesurl }}">slides</a>{% endif %}
-      {% if item.link %}<a href="{{ item.link }}">link</a>{% endif %}
+    <p class="compact-entry__actions" lang="{{ lang }}">
+      {% if item.slidesurl %}<a href="{{ item.slidesurl }}">{{ ui.slides }}</a>{% endif %}
+      {% if item.link %}<a href="{{ item.link }}">{{ ui.link }}</a>{% endif %}
     </p>
   {% endif %}
 </article>

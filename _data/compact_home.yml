@@ -1,0 +1,30 @@
+en:
+  main: Homepage
+  greeting: Hi, I'm Matt.
+  profile: Profile links
+  email: Email
+  scholar: Google Scholar
+  work: Work
+  sections: Work sections
+  papers: Papers
+  talks: Talks
+  projects: Projects
+  slides: slides
+  link: link
+  thumbnail: thumbnail
+  talk_date: '%B %-d, %Y'
+zh-TW:
+  main: 首頁
+  greeting: 你好，我是 Matt。
+  profile: 個人連結
+  email: 電子郵件
+  scholar: Google 學術搜尋
+  work: 研究與作品
+  sections: 作品分類
+  papers: 論文
+  talks: 演講
+  projects: 專案
+  slides: 投影片
+  link: 連結
+  thumbnail: 縮圖
+  talk_date: '%Y 年 %-m 月 %-d 日'

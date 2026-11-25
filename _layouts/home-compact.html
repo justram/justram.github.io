@@ -4,34 +4,46 @@ layout: compress
 
 {% include base_path %}
 {% assign author = site.author %}
+{% assign default_lang = site.locale | slice: 0,2 %}
+{% assign lang = page.lang | default: default_lang %}
+{% assign ui = site.data.compact_home[lang] %}
 
 <!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
+<html lang="{{ lang }}" class="no-js">
   <head>
     {% include head.html %}
     {% include head/custom.html %}
+    <link rel="alternate" hreflang="en" href="{{ '/' | absolute_url }}">
+    <link rel="alternate" hreflang="zh-TW" href="{{ '/zh-tw/' | absolute_url }}">
   </head>
 
   <body class="compact-home">
-    <main class="compact-home__main" aria-label="Homepage">
+    <main class="compact-home__main" aria-label="{{ ui.main }}">
+      <div class="compact-home__language">
+        {% if lang == 'zh-TW' %}
+          <a href="{{ '/' | relative_url }}" lang="en" hreflang="en">English</a>
+        {% else %}
+          <a href="{{ '/zh-tw/' | relative_url }}" lang="zh-TW" hreflang="zh-TW">繁體中文</a>
+        {% endif %}
+      </div>
       <header class="compact-home__hero" itemscope itemtype="http://schema.org/Person">
         {% if author.avatar %}
           <img
             class="compact-home__avatar"
             src="{{ author.avatar | prepend: '/images/' | prepend: base_path }}"
-            alt="{{ author.name }}"
+            alt="{% if lang == 'zh-TW' %}楊政紘{% else %}{{ author.name }}{% endif %}"
             itemprop="image"
           >
         {% endif %}
 
-        <h1 class="compact-home__title" itemprop="name">Hi, I'm Matt.</h1>
+        <h1 class="compact-home__title" itemprop="name">{{ ui.greeting }}</h1>
 
-        <nav class="compact-home__links" aria-label="Profile links">
+        <nav class="compact-home__links" aria-label="{{ ui.profile }}">
           {% if author.email %}
-            <a href="mailto:{{ author.email }}" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+            <a href="mailto:{{ author.email }}" aria-label="{{ ui.email }}"><i class="fas fa-envelope" aria-hidden="true"></i></a>
           {% endif %}
           {% if author.googlescholar %}
-            <a href="{{ author.googlescholar }}" aria-label="Google Scholar"><i class="ai ai-google-scholar" aria-hidden="true"></i></a>
+            <a href="{{ author.googlescholar }}" aria-label="{{ ui.scholar }}"><i class="ai ai-google-scholar" aria-hidden="true"></i></a>
           {% endif %}
           {% if author.github %}
             <a href="https://github.com/{{ author.github }}" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
@@ -52,16 +64,16 @@ layout: compress
 
       {% if site.publications.size > 0 or site.talks.size > 0 or site.portfolio.size > 0 %}
         <section class="compact-home__section compact-home__tabs" aria-labelledby="work">
-          <h2 id="work">Work</h2>
+          <h2 id="work">{{ ui.work }}</h2>
 
           <input class="compact-home__tab-input" type="radio" name="home-work-tab" id="tab-papers" checked>
           <input class="compact-home__tab-input" type="radio" name="home-work-tab" id="tab-talks">
           <input class="compact-home__tab-input" type="radio" name="home-work-tab" id="tab-projects">
 
-          <div class="compact-home__tab-list" role="tablist" aria-label="Work sections">
-            <label for="tab-papers" class="compact-home__tab">Papers</label>
-            <label for="tab-talks" class="compact-home__tab">Talks</label>
-            <label for="tab-projects" class="compact-home__tab">Projects</label>
+          <div class="compact-home__tab-list" role="tablist" aria-label="{{ ui.sections }}">
+            <label for="tab-papers" class="compact-home__tab">{{ ui.papers }}</label>
+            <label for="tab-talks" class="compact-home__tab">{{ ui.talks }}</label>
+            <label for="tab-projects" class="compact-home__tab">{{ ui.projects }}</label>
           </div>
 
           <div class="compact-home__tab-panel compact-home__tab-panel--papers">
@@ -99,10 +111,10 @@ layout: compress
                   {% assign project_title = project.title | replace: "Pi-serini", "PI_SERINI_SMALL_CAPS" | replace: "Pi-Serini", "PI_SERINI_SMALL_CAPS" | replace: "PI_SERINI_SMALL_CAPS", '<span class="small-caps">Pi-Serini</span>' %}
                   {% if project.thumbnail %}
                     <a class="compact-home__project-thumb" href="{{ project_url }}">
-                      <img src="{{ project.thumbnail | prepend: base_path }}" alt="{{ project.title | strip_html }} thumbnail">
+                      <img src="{{ project.thumbnail | prepend: base_path }}" alt="{{ project.title | strip_html }} {{ ui.thumbnail }}">
                     </a>
                   {% endif %}
-                  <div class="compact-home__project-copy">
+                  <div class="compact-home__project-copy" lang="en">
                     {% if project.link %}
                       <a href="{{ project_url }}">{{ project_title }}</a>
                     {% else %}

@@ -351,6 +351,51 @@
   }
 }
 
+@font-face {
+  font-family: "GenRyuMin TW";
+  src: url("../fonts/genryumin-tw-preview.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.compact-home .compact-home__language {
+  text-align: right;
+  font-size: 0.85rem;
+
+  a {
+    display: inline-block;
+    padding: 0.3em;
+    color: inherit;
+    text-underline-offset: 0.15em;
+  }
+
+  // Don't fetch a Chinese web font on the English page for a single label.
+  a:lang(zh-TW) {
+    font-family: "PingFang TC", "Microsoft JhengHei", "Noto Sans CJK TC", sans-serif;
+  }
+}
+
+.compact-home:lang(zh-TW) {
+  // The subset contains no Latin letters. Keep it ahead of system fonts in UI.
+  $tw-ui: "GenRyuMin TW", "PingFang TC", "Microsoft JhengHei", $global-font-family;
+  font-family: $tw-ui;
+
+  .compact-home__title,
+  .compact-home__section > h2,
+  .compact-home__tab {
+    font-family: $tw-ui;
+    font-weight: 400;
+  }
+
+  .compact-home__intro {
+    font-family: "Newsreader", "GenRyuMin TW", "Songti TC", "PMingLiU", serif;
+    line-break: strict;
+
+    p { line-height: 1.85; }
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   .compact-home {
     background: #151719;
