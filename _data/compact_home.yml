@@ -9,6 +9,7 @@ en:
   papers: Papers
   talks: Talks
   projects: Projects
+  talk_link: link
   slides: slides
   link: link
   thumbnail: thumbnail
@@ -20,10 +21,11 @@ zh-TW:
   email: 電子郵件
   scholar: Google 學術搜尋
   work: 研究與作品
-  sections: 作品分類
+  sections: 研究與作品分類
   papers: 論文
   talks: 演講
   projects: 專案
+  talk_link: 演講頁面
   slides: 投影片
   link: 連結
   thumbnail: 縮圖

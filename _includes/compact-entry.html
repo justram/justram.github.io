@@ -38,7 +38,7 @@
   {% if item.slidesurl or item.link %}
     <p class="compact-entry__actions" lang="{{ lang }}">
       {% if item.slidesurl %}<a href="{{ item.slidesurl }}">{{ ui.slides }}</a>{% endif %}
-      {% if item.link %}<a href="{{ item.link }}">{{ ui.link }}</a>{% endif %}
+      {% if item.link %}<a href="{{ item.link }}">{% if item.collection == "talks" %}{{ ui.talk_link }}{% else %}{{ ui.link }}{% endif %}</a>{% endif %}
     </p>
   {% endif %}
 </article>
