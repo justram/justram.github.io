@@ -8,14 +8,16 @@ excerpt: 你好，我是 Matt。
 author_profile: false
 ---
 
-我是楊政紘（Jheng-Hong "Matt" Yang）。我最近在想，搜尋代理要怎麼接續上次的工作？哪些證據值得留下，哪些得重新查找？我會對記憶感興趣，跟過去做搜尋與評測的經驗有關。在 Mixedbread，我設計並建置了強化學習環境，我們用它訓練了 [Toast 1](https://www.mixedbread.com/blog/toast-1)。
+我是楊政紘（Jheng-Hong "Matt" Yang）。做 <a href="https://github.com/justram/pi-serini"><span class="small-caps">Pi-Serini</span></a> 時，我想試試看：先讓搜尋代理讀五段摘錄，但把整份排序結果留著。這樣一來，代理不用重新搜尋，就能回到同一份清單往下看。哪篇值得打開來讀？我想把這個決定留給代理，而不是事先替它訂好規則。
 
 <details markdown="1">
-<summary>繼續讀：我怎麼開發、評測代理</summary>
+<summary>從代理怎麼找資料，可以看出什麼？</summary>
 
-要決定哪些證據值得留下，代理得先找到有用的資料。我研究語言模型怎麼搜尋、檢視證據和推理，因而發展出 <a href="https://github.com/justram/pi-serini"><span class="small-caps">Pi-Serini</span></a>。這個搜尋代理的設計很精簡，可以用它建立深度研究流程，兼顧可靠性與成本。
+代理漏掉一篇有用的文件，不一定是搜尋沒找到。文件也許就在清單裡，只是代理沒往下看到那一筆。把查詢、排序結果、代理看過的摘錄和打開過的文件對照起來，就能分清楚它在哪一步錯過了線索。代理越有能力，我越希望這層介面保持簡單，讓它自己決定下一步怎麼找。
 
-我在 Mixedbread 擔任 <span lang="en">Member of Technical Staff</span> 時，除了建置訓練環境，也負責評測，並改進了執行代理的程式（<span lang="en">harness</span>）。我在十月底離職。
+這也讓我想到訓練。如果清單裡已經有值得追的線索，代理卻一再從頭搜尋，那麼該學著改變的，就是這個選擇。我在 Mixedbread 擔任 <span lang="en">Member of Technical Staff</span> 時，設計並建置了一套強化學習環境，我們用它訓練了 [Toast 1](https://www.mixedbread.com/blog/toast-1)。我也負責評測，並改進了執行代理的程式（<span lang="en">harness</span>）。我在十月底離職。
+
+現在想起那份搜尋紀錄，我關心的是記憶。我可以回頭讀紀錄，弄清楚上次怎麼走到那一步。那麼對代理自己來說，一次搜尋的經驗可以用多簡單的形式留下來，讓它下次回頭找得到，也用得上？
 
 我最早是從資訊檢索走到代理研究的。在加拿大滑鐵盧大學做電腦科學博士研究時，我研究怎麼用神經網路排序檢索結果，也研究對話式搜尋與多模態檢索。在那之前，我在中央研究院研究推薦系統與資料驅動建模。更早以前，我學的是物理與電子工程：在國立交通大學取得電子物理學士及電子工程碩士學位後，我到台積電做半導體元件建模的研發工作。
 
