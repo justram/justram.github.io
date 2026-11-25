@@ -50,6 +50,12 @@
     max-width: 640px;
 
     details { margin-bottom: 1rem; }
+    .intro-notes {
+      border-top: 1px solid currentColor;
+      padding-top: 0.5rem;
+      ol { margin: 0; padding-inline-start: 1.5em; }
+      li { font-size: 0.85rem; margin-bottom: 0.4em; }
+    }
     summary {
       display: list-item;
       width: fit-content;
