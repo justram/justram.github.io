@@ -24,6 +24,19 @@
     animation: intro 0.3s both;
   }
 
+  .compact-home__notes {
+    margin-block-start: 3rem;
+    padding-block-start: 1.5rem;
+    border-block-start: 1px solid #d9dee2;
+    color: #515b65;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    ol { margin: 0; padding-inline-start: 1.6em; }
+    li + li { margin-block-start: 0.5em; }
+    a { color: inherit; text-decoration: underline; text-underline-offset: 0.14em; }
+    a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+  }
+
   .compact-home__hero {
     text-align: center;
   }
@@ -50,12 +63,6 @@
     max-width: 640px;
 
     details { margin-bottom: 1rem; }
-    .intro-notes {
-      border-top: 1px solid currentColor;
-      padding-top: 0.5rem;
-      ol { margin: 0; padding-inline-start: 1.5em; }
-      li { font-size: 0.85rem; margin-bottom: 0.4em; }
-    }
     summary {
       display: list-item;
       width: fit-content;
@@ -398,6 +405,11 @@
 @media (prefers-color-scheme: dark) {
   .compact-home {
     background: #151719;
+
+    .compact-home__notes {
+      color: #b4bdc6;
+      border-block-start-color: #384047;
+    }
     color: #e5e7eb;
 
     .compact-home__intro {
