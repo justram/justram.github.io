@@ -11,6 +11,8 @@
 }
 
 .compact-home {
+  font-family: "Newsreader", "GenRyuMin TW", Georgia, "Songti TC", serif;
+  h1, h2, h3, h4 { font-family: inherit; }
   background: #fff;
   color: #1f2933;
   color-scheme: light dark;
@@ -38,7 +40,6 @@
   .compact-home__title {
     user-select: none;
     margin: 0 0 0.45rem;
-    font-family: $global-font-family;
     font-size: 1.45rem;
     font-weight: 700;
     line-height: 1.2;
@@ -59,7 +60,6 @@
     details[open] > summary { margin-bottom: 1rem; }
     summary:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
     margin: 0 auto;
-    font-family: "Newsreader", Georgia, serif;
     text-align: left;
 
     h2 {
@@ -148,7 +148,6 @@
       margin: 0 0 1rem;
       padding-bottom: 0.4rem;
       border-bottom: 1px solid #d7dde3;
-      font-family: $global-font-family;
       font-size: 1.2rem;
       font-weight: 600;
     }
@@ -231,7 +230,6 @@
   .compact-entry__title {
     margin: 0 0 0.18rem;
     color: #334155;
-    font-family: $global-font-family;
     font-size: 0.92rem;
     font-weight: 500;
     line-height: 1.35;
@@ -381,26 +379,10 @@
     text-underline-offset: 0.15em;
   }
 
-  // Don't fetch a Chinese web font on the English page for a single label.
-  a:lang(zh-TW) {
-    font-family: "PingFang TC", "Microsoft JhengHei", "Noto Sans CJK TC", sans-serif;
-  }
 }
 
 .compact-home:lang(zh-TW) {
-  // The subset contains no Latin letters. Keep it ahead of system fonts in UI.
-  $tw-ui: "GenRyuMin TW", "PingFang TC", "Microsoft JhengHei", $global-font-family;
-  font-family: $tw-ui;
-
-  .compact-home__title,
-  .compact-home__section > h2,
-  .compact-home__tab {
-    font-family: $tw-ui;
-    font-weight: 400;
-  }
-
   .compact-home__intro {
-    font-family: "Newsreader", "GenRyuMin TW", "Songti TC", "PMingLiU", serif;
     line-break: strict;
 
     p { line-height: 1.85; }

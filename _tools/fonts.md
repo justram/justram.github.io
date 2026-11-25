@@ -14,7 +14,7 @@ bundle exec jekyll build
 cmp assets/fonts/genryumin-tw-preview.woff2 _site/assets/fonts/genryumin-tw-preview.woff2
 ```
 
-Use the first build's actual destination in place of `_site` if different. Commit only the resulting `assets/fonts/genryumin-tw-preview.woff2` with the copy changes, not the full OTF or build directory. The helper pins its dependencies, checks both input font hashes, preserves the input timestamp, and reopens the WOFF2 to verify **exact cmap equality** and weight. It reads zh-TW body text (including inactive tabs) and translated `alt`, `aria-label`, `title` and `placeholder` attributes, not URLs, scripts, comments or English subtrees. It keeps fullwidth and CJK punctuation present in this text, excludes characters covered by Newsreader and leaves other Latin letters to Latin fallback. CSS-generated or JS-injected Chinese text would require updating the collector.
+Use the first build's actual destination in place of `_site` if different. Commit only the resulting `assets/fonts/genryumin-tw-preview.woff2` with the copy changes, not the full OTF or build directory. The helper pins its dependencies, checks both input font hashes, preserves the input timestamp, and reopens the WOFF2 to verify **exact cmap equality** and weight. It reads the English homepage’s zh-TW switch label, zh-TW body text (including inactive tabs) and translated `alt`, `aria-label`, `title` and `placeholder` attributes, not URLs, scripts, comments or English subtrees. It keeps fullwidth and CJK punctuation present in this text, excludes characters covered by Newsreader and leaves other Latin letters to Latin fallback. CSS-generated or JS-injected Chinese text would require updating the collector.
 
 ## Provenance and redistribution
 

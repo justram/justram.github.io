@@ -49,7 +49,10 @@ def main():
     if doc.get('lang', '').lower() != 'zh-tw' or doc.body is None:
         raise SystemExit('Expected a built zh-TW page with a body')
     latin = checked_font(FONTS / 'newsreader-latin.woff2', LATIN).getBestCmap()
-    wanted = {ord(c) for s in strings(doc.body, 'zh-tw') for c in s
+    en = html.document_fromstring((args.page.parents[1] / 'index.html').read_text(encoding='utf-8'))
+    labels = en.xpath('//a[@hreflang="zh-TW"]')
+    texts = [*strings(doc.body, 'zh-tw'), *(label.text_content() for label in labels)]
+    wanted = {ord(c) for s in texts for c in s
               if not c.isspace() and unicodedata.category(c) not in ('Cf', 'Cc')
               and not unicodedata.name(c, '').startswith(('LATIN ', 'VARIATION SELECTOR'))} - latin.keys()
     if not wanted:

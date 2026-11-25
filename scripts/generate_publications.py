@@ -254,7 +254,7 @@ def render_publication(entry: BibEntry) -> str:
 
     lines = ["---"]
     for key, value in front_matter.items():
-        if value:
+        if value or key == "excerpt":  # Never derive a reader excerpt from the maintenance note.
             if key == "generated_from_bib":
                 lines.append(f"{key}: true")
             else:
