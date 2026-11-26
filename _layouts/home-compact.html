@@ -15,16 +15,27 @@ layout: compress
     {% include head/custom.html %}
     <link rel="alternate" hreflang="en" href="{{ '/' | absolute_url }}">
     <link rel="alternate" hreflang="zh-TW" href="{{ '/zh-tw/' | absolute_url }}">
+    <style>
+      @media (prefers-reduced-motion: no-preference) {
+        @view-transition { navigation: auto; }
+        :root { view-transition-name: none; }
+      }
+    </style>
   </head>
 
   <body class="compact-home">
     <main class="compact-home__main" aria-label="{{ ui.main }}">
       <div class="compact-home__language">
-        {% if lang == 'zh-TW' %}
-          <a href="{{ '/' | relative_url }}" lang="en" hreflang="en">English</a>
-        {% else %}
-          <a href="{{ '/zh-tw/' | relative_url }}" lang="zh-TW" hreflang="zh-TW">正體中文</a>
-        {% endif %}
+        <div class="compact-home__language-track">
+          <span class="compact-home__language-pill" aria-hidden="true"></span>
+          {% if lang == 'zh-TW' %}
+            <a href="{{ '/' | relative_url }}" lang="en" hreflang="en" aria-label="English">EN</a>
+            <span lang="zh-TW" aria-current="page"><span aria-hidden="true">文</span><span class="screen-reader-text">正體中文（目前語言）</span></span>
+          {% else %}
+            <span lang="en" aria-current="page"><span aria-hidden="true">EN</span><span class="screen-reader-text">English (current language)</span></span>
+            <a href="{{ '/zh-tw/' | relative_url }}" lang="zh-TW" hreflang="zh-TW" aria-label="正體中文">文</a>
+          {% endif %}
+        </div>
       </div>
       <header class="compact-home__hero" itemscope itemtype="http://schema.org/Person">
         {% if author.avatar %}

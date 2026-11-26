@@ -181,51 +181,72 @@
   }
 
   .compact-home__tab-list {
-    display: inline-flex;
-    gap: 0.12rem;
+    --tab-width: 4.8rem;
+    --tab-gap: 0.12rem;
+    --tab-inset: 0.18rem;
+    --tab-index: 0;
+    --tab-pill-background: #fff;
+    position: relative;
+    display: inline-grid;
+    grid-template-columns: repeat(3, var(--tab-width));
+    gap: var(--tab-gap);
     margin: 0 0 1rem;
-    padding: 0.18rem;
-    border: 1px solid #d7dde3;
-    border-radius: 0.45rem;
-    background: #f6f8fa;
-    box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04);
+    padding: var(--tab-inset);
+    border-radius: 999px;
+    background: #eef4fa;
+    color: #315f7b;
     user-select: none;
+
+    &::before {
+      content: "";
+      position: absolute;
+      box-sizing: border-box;
+      inset: var(--tab-inset) auto var(--tab-inset) var(--tab-inset);
+      width: var(--tab-width);
+      border: 1px solid currentColor;
+      border-radius: inherit;
+      background: var(--tab-pill-background);
+      pointer-events: none;
+      transform: translateX(calc(var(--tab-index) * (var(--tab-width) + var(--tab-gap))));
+      transition: transform 220ms ease;
+
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
+    }
   }
 
   .compact-home__tab {
-    min-width: 4.8rem;
-    padding: 0.26rem 0.75rem;
-    border-radius: 0.32rem;
-    color: #475569;
+    position: relative;
+    // Center the visible strokes, not the font's line box.
+    --tab-ink-shift: 0px;
+    margin: 0;
+    padding-block: calc(0.26rem - 1px + var(--tab-ink-shift)) calc(0.26rem - 1px - var(--tab-ink-shift));
+    border: 1px solid transparent;
+    border-radius: 999px;
+    color: inherit;
     font-size: 0.82rem;
     font-weight: 600;
     line-height: 1.35;
     text-align: center;
-    transition: background-color 0.12s ease, box-shadow 0.12s ease, color 0.12s ease, transform 0.08s ease;
     -webkit-tap-highlight-color: transparent;
 
-    &:active {
-      transform: translateY(1px);
-    }
+    &[for="tab-talks"] { --tab-ink-shift: 0.15em; }
+    &:lang(zh-TW) { --tab-ink-shift: 0.18em; }
   }
 
   .compact-home__tab-panel {
     display: none;
   }
 
-  #tab-papers:checked ~ .compact-home__tab-list label[for="tab-papers"],
-  #tab-talks:checked ~ .compact-home__tab-list label[for="tab-talks"],
-  #tab-projects:checked ~ .compact-home__tab-list label[for="tab-projects"] {
-    background: #fff;
-    color: #1f2933;
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12);
-  }
+  #tab-talks:checked ~ .compact-home__tab-list { --tab-index: 1; }
+  #tab-projects:checked ~ .compact-home__tab-list { --tab-index: 2; }
 
   #tab-papers:focus-visible ~ .compact-home__tab-list label[for="tab-papers"],
   #tab-talks:focus-visible ~ .compact-home__tab-list label[for="tab-talks"],
   #tab-projects:focus-visible ~ .compact-home__tab-list label[for="tab-projects"] {
-    outline: 2px solid Highlight;
-    outline-offset: 2px;
+    outline: 2px solid currentColor;
+    outline-offset: 1px;
   }
 
   #tab-papers:checked ~ .compact-home__tab-panel--papers,
@@ -385,13 +406,97 @@
   text-align: right;
   font-size: 0.85rem;
 
-  a {
-    display: inline-block;
-    padding: 0.3em;
-    color: inherit;
-    text-underline-offset: 0.15em;
+  .compact-home__language-track {
+    --language-segment-width: 2.5rem;
+    --language-inset: 0.125rem;
+    position: relative;
+    display: inline-grid;
+    grid-template-columns: repeat(2, var(--language-segment-width));
+    padding: var(--language-inset);
+    border-radius: 999px;
+    background: #eef4fa;
+    color: #315f7b;
+    text-align: center;
+
+    > [lang] {
+      position: relative;
+      display: grid;
+      place-items: center;
+      box-sizing: border-box;
+      height: 1.8rem;
+      // The visible glyphs sit above the line box center by different amounts.
+      padding-block-start: 0.4em;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      color: inherit;
+    }
+
+    > [lang="en"] {
+      padding-block-start: 0.31em;
+    }
+
+    > .compact-home__language-pill {
+      position: absolute;
+      box-sizing: border-box;
+      inset: var(--language-inset) auto var(--language-inset) var(--language-inset);
+      width: var(--language-segment-width);
+      border: 1px solid currentColor;
+      border-radius: inherit;
+      background: #fff;
+      pointer-events: none;
+    }
+
+    &:has(> [lang="zh-TW"][aria-current="page"]) > .compact-home__language-pill {
+      left: calc(var(--language-inset) + var(--language-segment-width));
+    }
+
+    > a {
+      text-decoration: none;
+      transition-property: background-color;
+
+      &:hover {
+        background: #dce9f5;
+      }
+
+      &:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: -2px;
+      }
+    }
+  }
+}
+
+// Capture the pill separately so the labels stay above it during navigation.
+@media (prefers-reduced-motion: no-preference) {
+  .compact-home__language-track {
+    view-transition-name: compact-language-track;
+
+    > .compact-home__language-pill { view-transition-name: compact-language-pill; }
+    > [lang="en"] { view-transition-name: compact-language-en; }
+    > [lang="zh-TW"] { view-transition-name: compact-language-zh; }
   }
 
+  ::view-transition-group(compact-language-pill) {
+    animation-duration: 220ms;
+    animation-timing-function: ease;
+  }
+
+  ::view-transition-group(compact-language-track),
+  ::view-transition-group(compact-language-en),
+  ::view-transition-group(compact-language-zh),
+  ::view-transition-new(compact-language-track),
+  ::view-transition-new(compact-language-pill),
+  ::view-transition-new(compact-language-en),
+  ::view-transition-new(compact-language-zh) {
+    animation: none;
+  }
+
+  ::view-transition-old(compact-language-track),
+  ::view-transition-old(compact-language-pill),
+  ::view-transition-old(compact-language-en),
+  ::view-transition-old(compact-language-zh) {
+    display: none;
+  }
 }
 
 .compact-home:lang(zh-TW) {
@@ -415,6 +520,19 @@
     .compact-home__intro {
       a {
         color: #8ab4f8;
+      }
+    }
+
+    .compact-home__language .compact-home__language-track {
+      background: #232a31;
+      color: #8ab4f8;
+
+      > .compact-home__language-pill {
+        background: #151719;
+      }
+
+      > a:hover {
+        background: #303b47;
       }
     }
 
@@ -442,21 +560,9 @@
     }
 
     .compact-home__tab-list {
-      border-color: #30363d;
-      background: #1f2429;
-      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.22);
-    }
-
-    .compact-home__tab {
-      color: #c9d1d9;
-    }
-
-    #tab-papers:checked ~ .compact-home__tab-list label[for="tab-papers"],
-    #tab-talks:checked ~ .compact-home__tab-list label[for="tab-talks"],
-    #tab-projects:checked ~ .compact-home__tab-list label[for="tab-projects"] {
-      background: #2a3036;
-      color: #f3f4f6;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+      --tab-pill-background: #151719;
+      background: #232a31;
+      color: #8ab4f8;
     }
 
     .compact-entry__title {
